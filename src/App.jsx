@@ -1,0 +1,148 @@
+import React, { useState } from 'react';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import TrustedBy from './components/TrustedBy';
+import Capabilities from './components/Capabilities';
+import Pricing from './components/Pricing';
+import FAQ from './components/FAQ';
+import FinalCTA from './components/FinalCTA';
+import Footer from './components/Footer';
+import BookingModal from './components/BookingModal';
+
+export default function App() {
+  const [bookingModalOpen, setBookingModalOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  const handleBookClick = () => {
+    setSelectedProject(null);
+    setBookingModalOpen(true);
+  };
+
+  const handleViewPlansClick = () => {
+    const plansElem = document.querySelector('#plans');
+    if (plansElem) {
+      plansElem.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // Generate 20 lines array for global side curved lines animation (shared across all sections)
+  const sideLinesCount = 20;
+  const linesArray = Array.from({ length: sideLinesCount }, (_, i) => i);
+
+  return (
+    <div className="app-main">
+      {/* Global Hero Pulse Curve Lines (Running across ALL page sections) */}
+      <div className="global-side-lines left">
+        {linesArray.map((i) => (
+          <div
+            key={`g-left-${i}`}
+            className="curved-line"
+            style={{
+              width: `${60 + i * 10}px`,
+              animationDelay: `${i * 0.25}s`,
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="global-side-lines right">
+        {linesArray.map((i) => (
+          <div
+            key={`g-right-${i}`}
+            className="curved-line"
+            style={{
+              width: `${60 + i * 10}px`,
+              animationDelay: `${i * 0.25}s`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Global Top Curved Lines for Mobile */}
+      <div className="global-top-lines">
+        {linesArray.map((i) => (
+          <div
+            key={`g-top-${i}`}
+            className="top-curved-line"
+            style={{
+              height: `${40 + i * 12}px`,
+              animationDelay: `${i * 0.25}s`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* 1. Navbar */}
+      <Navbar onBookClick={handleBookClick} />
+
+      {/* 2. Hero Section */}
+      <Hero 
+        onBookClick={handleBookClick} 
+        onViewPlansClick={handleViewPlansClick} 
+      />
+
+      {/* 3. TrustedBy Section */}
+      <TrustedBy />
+
+      {/* 4. Floating Island Background Section (178512684152f2-Photoroom.png on Right) */}
+      <div className="middle-bg-section-1">
+        <section className="section-container">
+          <div className="section-header split-left-header">
+            <span className="section-tag">Visual Craft</span>
+            <h2 className="section-title">
+              Design & engineering <span className="serif italic">harmony</span>.
+            </h2>
+            <p className="section-subtitle">
+              Uncompromising aesthetics engineered for modern digital experiences.
+            </p>
+          </div>
+        </section>
+      </div>
+
+      {/* Core Capabilities Section with Middle Image 3 Background */}
+      <div className="middle-bg-section-3">
+        <Capabilities />
+      </div>
+
+      {/* 5. UNCROPPED Middle Image Section (1785125759f7fc-Photoroom.png) */}
+      <div className="middle-bg-section-2">
+        <section className="section-container" style={{ padding: '0 20px' }}>
+          <div className="section-header centered stone-sign-header">
+            <span className="section-tag">Built for Speed</span>
+            <h2 className="section-title">
+              Crafted for ambitious <span className="serif italic">scale</span>.
+            </h2>
+            <p className="section-subtitle">
+              Senior design capability delivered on demand with zero contract friction or slow corporate overhead.
+            </p>
+          </div>
+        </section>
+      </div>
+
+      {/* 6. Pricing & Subscription Plans (Liquid Glass Cards) */}
+      <Pricing onBookClick={handleBookClick} />
+
+      {/* 7. Essential FAQs (Liquid Glass Cards) */}
+      <FAQ />
+
+      {/* 8. Final CTA Hero Banner */}
+      <FinalCTA 
+        onBookClick={handleBookClick} 
+        onViewPlansClick={handleViewPlansClick} 
+      />
+
+      {/* 9. Footer with footer.avif Background Image */}
+      <Footer onBookClick={handleBookClick} />
+
+      {/* Booking Modal Overlay */}
+      <BookingModal
+        isOpen={bookingModalOpen}
+        onClose={() => {
+          setBookingModalOpen(false);
+          setSelectedProject(null);
+        }}
+        selectedProject={selectedProject}
+      />
+    </div>
+  );
+}
