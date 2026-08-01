@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Check } from 'lucide-react';
 
 export default function Pricing({ onBookClick }) {
   const [isQuarterly, setIsQuarterly] = useState(false);
@@ -37,108 +36,113 @@ export default function Pricing({ onBookClick }) {
         </span>
       </div>
 
-      {/* Pricing Cards Grid */}
+      {/* Pricing Cards Grid (3 Cards horizontally with pricecard-Photoroom.png background) */}
       <div className="pricing-grid">
         {/* Standard Plan */}
-        <div className="pricing-card liquid-glass">
-          <div>
-            <h3 className="plan-name">Standard</h3>
-            <p className="plan-desc">Perfect for growing startups and brands needing ongoing design speed.</p>
+        <div className="pricing-card-img-bg">
+          <div className="board-card-inner">
+            <h3 className="plan-name" style={{ color: '#ffffff', fontSize: '22px', fontWeight: 800, textShadow: '0 2px 4px rgba(0,0,0,0.9)' }}>Standard</h3>
+            <p className="plan-desc" style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '12px', marginBottom: '10px', textShadow: '0 1px 3px rgba(0,0,0,0.9)' }}>
+              Ongoing design speed for growing brands.
+            </p>
             
-            <div className="plan-price-wrapper">
-              <span className="plan-price">
+            <div className="plan-price-wrapper" style={{ marginBottom: '12px' }}>
+              <span className="plan-price" style={{ color: '#ffffff', fontSize: '36px', fontWeight: 800, textShadow: '0 2px 4px rgba(0,0,0,0.95)' }}>
                 ${isQuarterly ? '4,240' : '4,990'}
               </span>
-              <span className="plan-period">/ month</span>
+              <span className="plan-period" style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '12px' }}>/ mo</span>
             </div>
 
-            <ul className="plan-features-list">
-              <li className="plan-feature-item">
-                <Check size={16} style={{ color: 'var(--green)' }} /> 1 active request at a time
+            <ul className="plan-features-list" style={{ gap: '6px', marginBottom: '16px', listStyle: 'none', padding: 0 }}>
+              <li className="plan-feature-item" style={{ color: '#ffffff', fontSize: '12px', fontWeight: 600, textShadow: '0 1px 2px rgba(0,0,0,0.9)', textAlign: 'center' }}>
+                1 active request at a time
               </li>
-              <li className="plan-feature-item">
-                <Check size={16} style={{ color: 'var(--green)' }} /> Avg 48-hour delivery turnaround
+              <li className="plan-feature-item" style={{ color: '#ffffff', fontSize: '12px', fontWeight: 600, textShadow: '0 1px 2px rgba(0,0,0,0.9)', textAlign: 'center' }}>
+                Avg 48-hour delivery turnaround
               </li>
-              <li className="plan-feature-item">
-                <Check size={16} style={{ color: 'var(--green)' }} /> Unlimited revisions & scope edits
+              <li className="plan-feature-item" style={{ color: '#ffffff', fontSize: '12px', fontWeight: 600, textShadow: '0 1px 2px rgba(0,0,0,0.9)', textAlign: 'center' }}>
+                Unlimited revisions & scope edits
               </li>
-              <li className="plan-feature-item">
-                <Check size={16} style={{ color: 'var(--green)' }} /> React, Next.js & Webflow code
-              </li>
-              <li className="plan-feature-item">
-                <Check size={16} style={{ color: 'var(--green)' }} /> Pause or cancel anytime seamlessly
+              <li className="plan-feature-item" style={{ color: '#ffffff', fontSize: '12px', fontWeight: 600, textShadow: '0 1px 2px rgba(0,0,0,0.9)', textAlign: 'center' }}>
+                Pause or cancel anytime
               </li>
             </ul>
           </div>
 
-          <button className="plan-btn liquid-glass-strong" onClick={onBookClick}>
+          <button className="glass-board-btn" onClick={onBookClick}>
             Get Started
           </button>
         </div>
 
         {/* Double Power Featured Plan */}
-        <div className="pricing-card featured liquid-glass-strong">
-          <span className="featured-badge">Most Popular</span>
-          <div>
-            <h3 className="plan-name">Double Power</h3>
-            <p className="plan-desc">For ambitious teams with high design volume requiring double output.</p>
+        <div className="pricing-card-img-bg featured">
+          <span className="featured-badge" style={{ top: '32px', right: 'auto', left: '50%', transform: 'translateX(-50%)' }}>
+            Most Popular
+          </span>
+          <div className="board-card-inner">
+            <h3 className="plan-name" style={{ color: '#ffffff', fontSize: '22px', fontWeight: 800, textShadow: '0 2px 4px rgba(0,0,0,0.9)' }}>Double Power</h3>
+            <p className="plan-desc" style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '12px', marginBottom: '10px', textShadow: '0 1px 3px rgba(0,0,0,0.9)' }}>
+              High design volume with double output.
+            </p>
             
-            <div className="plan-price-wrapper">
-              <span className="plan-price">
+            <div className="plan-price-wrapper" style={{ marginBottom: '12px' }}>
+              <span className="plan-price" style={{ color: '#ffffff', fontSize: '36px', fontWeight: 800, textShadow: '0 2px 4px rgba(0,0,0,0.95)' }}>
                 ${isQuarterly ? '7,640' : '8,990'}
               </span>
-              <span className="plan-period">/ month</span>
+              <span className="plan-period" style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '12px' }}>/ mo</span>
             </div>
 
-            <ul className="plan-features-list">
-              <li className="plan-feature-item">
-                <Check size={16} style={{ color: 'var(--green)' }} /> 2 active requests simultaneously
+            <ul className="plan-features-list" style={{ gap: '6px', marginBottom: '16px', listStyle: 'none', padding: 0 }}>
+              <li className="plan-feature-item" style={{ color: '#ffffff', fontSize: '12px', fontWeight: 600, textShadow: '0 1px 2px rgba(0,0,0,0.9)', textAlign: 'center' }}>
+                2 active requests simultaneously
               </li>
-              <li className="plan-feature-item">
-                <Check size={16} style={{ color: 'var(--green)' }} /> Priority 24 - 48h turnaround
+              <li className="plan-feature-item" style={{ color: '#ffffff', fontSize: '12px', fontWeight: 600, textShadow: '0 1px 2px rgba(0,0,0,0.9)', textAlign: 'center' }}>
+                Priority 24-48h turnaround
               </li>
-              <li className="plan-feature-item">
-                <Check size={16} style={{ color: 'var(--green)' }} /> Dedicated Lead Creative Director
+              <li className="plan-feature-item" style={{ color: '#ffffff', fontSize: '12px', fontWeight: 600, textShadow: '0 1px 2px rgba(0,0,0,0.9)', textAlign: 'center' }}>
+                Dedicated Creative Director
               </li>
-              <li className="plan-feature-item">
-                <Check size={16} style={{ color: 'var(--green)' }} /> Private Slack or Discord channel
+              <li className="plan-feature-item" style={{ color: '#ffffff', fontSize: '12px', fontWeight: 600, textShadow: '0 1px 2px rgba(0,0,0,0.9)', textAlign: 'center' }}>
+                Private Slack/Discord channel
               </li>
             </ul>
           </div>
 
-          <button className="plan-btn liquid-glass-strong" onClick={onBookClick} style={{ background: '#ffffff', color: '#0a0a0a' }}>
+          <button className="glass-board-btn" onClick={onBookClick}>
             Subscribe Now
           </button>
         </div>
 
         {/* Custom Scope / Enterprise */}
-        <div className="pricing-card liquid-glass">
-          <div>
-            <h3 className="plan-name">Custom Scope</h3>
-            <p className="plan-desc">Fixed-scope project sprints or tailored enterprise support for big launches.</p>
+        <div className="pricing-card-img-bg">
+          <div className="board-card-inner">
+            <h3 className="plan-name" style={{ color: '#ffffff', fontSize: '22px', fontWeight: 800, textShadow: '0 2px 4px rgba(0,0,0,0.9)' }}>Custom Scope</h3>
+            <p className="plan-desc" style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '12px', marginBottom: '10px', textShadow: '0 1px 3px rgba(0,0,0,0.9)' }}>
+              Tailored sprints for major launches.
+            </p>
             
-            <div className="plan-price-wrapper">
-              <span className="plan-price">Custom</span>
-              <span className="plan-period">/ project</span>
+            <div className="plan-price-wrapper" style={{ marginBottom: '12px' }}>
+              <span className="plan-price" style={{ color: '#ffffff', fontSize: '36px', fontWeight: 800, textShadow: '0 2px 4px rgba(0,0,0,0.95)' }}>Custom</span>
+              <span className="plan-period" style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '12px' }}>/ project</span>
             </div>
 
-            <ul className="plan-features-list">
-              <li className="plan-feature-item">
-                <Check size={16} style={{ color: 'var(--green)' }} /> Dedicated full agency pod
+            <ul className="plan-features-list" style={{ gap: '6px', marginBottom: '16px', listStyle: 'none', padding: 0 }}>
+              <li className="plan-feature-item" style={{ color: '#ffffff', fontSize: '12px', fontWeight: 600, textShadow: '0 1px 2px rgba(0,0,0,0.9)', textAlign: 'center' }}>
+                Dedicated full agency pod
               </li>
-              <li className="plan-feature-item">
-                <Check size={16} style={{ color: 'var(--green)' }} /> Guaranteed launch deadline SLA
+              <li className="plan-feature-item" style={{ color: '#ffffff', fontSize: '12px', fontWeight: 600, textShadow: '0 1px 2px rgba(0,0,0,0.9)', textAlign: 'center' }}>
+                Guaranteed launch deadline SLA
               </li>
-              <li className="plan-feature-item">
-                <Check size={16} style={{ color: 'var(--green)' }} /> Complete brand + web overhaul
+              <li className="plan-feature-item" style={{ color: '#ffffff', fontSize: '12.5px', fontWeight: 600, textShadow: '0 1px 2px rgba(0,0,0,0.9)', textAlign: 'center' }}>
+                Complete brand + web overhaul
               </li>
-              <li className="plan-feature-item">
-                <Check size={16} style={{ color: 'var(--green)' }} /> Enterprise NDA & legal contracts
+              <li className="plan-feature-item" style={{ color: '#ffffff', fontSize: '12px', fontWeight: 600, textShadow: '0 1px 2px rgba(0,0,0,0.9)', textAlign: 'center' }}>
+                Enterprise NDA & contracts
               </li>
             </ul>
           </div>
 
-          <button className="plan-btn liquid-glass-strong" onClick={onBookClick}>
+          <button className="glass-board-btn" onClick={onBookClick}>
             Book a Call
           </button>
         </div>

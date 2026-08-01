@@ -1185,6 +1185,66 @@ body::before {
   gap: 24px;
 }
 
+.pricing-card-img-bg {
+  position: relative;
+  background-image: url("https://pub-04643188b78b434d8c44735a34b1fe23.r2.dev/pricecard-Photoroom.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 560px;
+  padding: 165px 48px 145px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  overflow: visible;
+}
+
+.pricing-card-img-bg:hover {
+  transform: translateY(-6px);
+  filter: brightness(1.06);
+}
+
+.board-card-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.glass-board-btn {
+  width: 100%;
+  max-width: 190px;
+  height: 42px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  color: #ffffff !important;
+  font-size: 13.5px;
+  font-weight: 700;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  transition: all 0.25s ease;
+  margin-top: 12px;
+  margin-bottom: 10px;
+}
+
+.glass-board-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+  border-color: rgba(255, 255, 255, 0.85);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
 .pricing-card {
   border-radius: 24px;
   padding: 36px;
@@ -1399,19 +1459,88 @@ body::before {
   color: var(--muted);
 }
 
-/* Final CTA Section */
-.final-cta-card {
-  background: var(--button-bg);
-  color: var(--button-text);
-  border-radius: 32px;
-  padding: 72px 40px;
+/* Final CTA Section with 3D Branch Frame & Inner Dark Glass Card */
+.final-cta-frame-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1040px;
+  min-height: 560px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.final-cta-frame-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+  z-index: 10;
+  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.25));
+}
+
+.glass-card-under {
+  position: relative;
+  z-index: 5;
+  width: 88%;
+  max-width: 880px;
+  padding: 85px 60px;
+  background: #1c1e20;
+  border-radius: 12px;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.8), 0 20px 50px rgba(0, 0, 0, 0.4);
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  position: relative;
-  overflow: hidden;
+  justify-content: center;
+  gap: 22px;
+}
+
+.cta-slot-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  border-radius: 9999px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.see-plans-btn {
+  background: #ffffff !important;
+  color: #0a0a0a !important;
+  font-weight: 700 !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.see-plans-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+.intro-call-btn {
+  background: rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.intro-call-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(0, 0, 0, 0.8) !important;
+  border-color: rgba(255, 255, 255, 0.6) !important;
 }
 
 .final-cta-title {
@@ -1446,7 +1575,7 @@ body::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url("https://pub-04643188b78b434d8c44735a34b1fe23.r2.dev/footer.avif");
+  background-image: url("https://pub-04643188b78b434d8c44735a34b1fe23.r2.dev/footer2-Photoroom.png");
   background-size: cover;
   background-position: center;
   opacity: 1;
@@ -1685,4 +1814,65 @@ body::before {
     gap: 16px;
     text-align: center;
   }
+}
+
+/* ==========================================================================
+   FULLSCREEN LOADING PAGE WITH COMPACT 3-LAYER DOT SPINNER
+   ========================================================================== */
+
+.loading-page-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-color: #ffffff; /* Pure White Background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.loading-circle-container {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dots-ring-layer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.spinning-layer {
+  animation: ring-spin infinite linear;
+}
+
+@keyframes ring-spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.dot-positioner {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-dot {
+  border-radius: 50%;
+  transition: opacity 0.15s ease, background-color 0.15s ease, transform 0.15s ease;
 }

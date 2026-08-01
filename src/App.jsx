@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import TrustedBy from './components/TrustedBy';
@@ -8,10 +8,20 @@ import FAQ from './components/FAQ';
 import FinalCTA from './components/FinalCTA';
 import Footer from './components/Footer';
 import BookingModal from './components/BookingModal';
+import LoadingScreen from './components/LoadingScreen';
 
 export default function App() {
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Initial loading page display for 2.5 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2500);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleBookClick = () => {
     setSelectedProject(null);
@@ -31,6 +41,8 @@ export default function App() {
 
   return (
     <div className="app-main">
+      {/* 3-Layer Dot Circle Fullscreen Loading Page */}
+      <LoadingScreen isLoading={isLoading} />
       {/* Global Hero Pulse Curve Lines (Running across ALL page sections) */}
       <div className="global-side-lines left">
         {linesArray.map((i) => (
