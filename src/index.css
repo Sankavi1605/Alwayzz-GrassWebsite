@@ -22,6 +22,10 @@
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --display-axes: 'SOFT' 60, 'WONK' 1;
 
+  /* Cinzel = Roman inscriptional capitals, the letterform stonemasons
+     actually cut. Used for text carved into the hanging stone sign. */
+  --font-stone: 'Cinzel', 'Fraunces', Georgia, serif;
+
   /* Grass fill used by .grass-text. Real lawn macro (Jason Dent / Unsplash,
      free for commercial use), colour-graded at the CDN to match the moss
      globe in the hero: bri/sat/hue push it from a dark rgb(40,84,31) to a
@@ -1025,11 +1029,8 @@ body::before {
 }
 
 .stone-sign-header .section-title {
-  color: #000000;
-  font-size: 36px;
-  font-weight: 800;
-  letter-spacing: -0.05em;
-  line-height: 1.15;
+  font-size: 34px;
+  line-height: 1.28;
 }
 
 .stone-sign-header .section-subtitle {
@@ -1041,6 +1042,43 @@ body::before {
   text-shadow: 0 1px 2px rgba(255, 255, 255, 0.95);
   max-width: 380px;
 }
+
+/* ==========================================================================
+   CARVED-IN-STONE TEXT (hanging stone sign)
+   ========================================================================== */
+
+/* Reads as chiselled rather than printed. Three things sell it:
+   1. Cinzel — Roman inscriptional capitals, wide-tracked, all caps, the way
+      a mason actually cuts letters.
+   2. A slightly translucent dark fill, so the stone grain underneath shows
+      through the letters — the groove is the SAME stone, just in shadow.
+   3. Shadows matched to the sign's lighting (sun from above): a dark wall
+      along the top inner edge, a lit lip along the bottom edge. That pairing
+      is what the eye reads as "cut into", not "sitting on top of". */
+.carved-text {
+  font-family: var(--font-stone);
+  font-variation-settings: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.045em;
+  color: rgba(38, 34, 28, 0.9);
+  text-shadow:
+    0 -1px 1px rgba(0, 0, 0, 0.55),
+    0 1px 0 rgba(255, 255, 255, 0.6),
+    0 2px 3px rgba(255, 255, 255, 0.28),
+    0 0 5px rgba(0, 0, 0, 0.22);
+}
+
+/* Inscriptions have no italics — the accent word carries weight instead. */
+.carved-text .serif,
+.carved-text .italic,
+.carved-text .serif.italic {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 900;
+  letter-spacing: inherit;
+}
+
 
 /* Capabilities sits on the dark forest artwork, so its copy runs light */
 .capabilities-wrapper .section-subtitle {

@@ -121,7 +121,7 @@ export default function App() {
         <section className="section-container" style={{ padding: '0 20px' }}>
           <div className="section-header centered stone-sign-header">
             <span className="section-tag">Built for Speed</span>
-            <h2 className="section-title grass-text">
+            <h2 className="section-title carved-text">
               Crafted for ambitious <span className="serif italic">scale</span>.
             </h2>
             <p className="section-subtitle">
