@@ -4,7 +4,7 @@ export default function Pricing({ onBookClick }) {
   const [isQuarterly, setIsQuarterly] = useState(false);
 
   return (
-    <section id="plans" className="section-container" style={{ scrollMarginTop: '120px', paddingTop: '120px' }}>
+    <section id="plans" className="section-container pricing-section" style={{ scrollMarginTop: '120px' }}>
       <div className="section-header" style={{ textAlign: 'center', alignItems: 'center' }}>
         <span className="section-tag">Transparent Pricing</span>
         <h2 className="section-title">

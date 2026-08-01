@@ -1,10 +1,23 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 export default function HeroBeforeAfter() {
   const containerRef = useRef(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
-  const maskRadius = 160; // Lens radius in px
+  // Lens radius scales with the container so it stays proportional on small screens
+  const [maskRadius, setMaskRadius] = useState(160);
+
+  useEffect(() => {
+    const syncRadius = () => {
+      if (!containerRef.current) return;
+      const { width } = containerRef.current.getBoundingClientRect();
+      setMaskRadius(Math.max(70, Math.min(160, width * 0.28)));
+    };
+
+    syncRadius();
+    window.addEventListener('resize', syncRadius);
+    return () => window.removeEventListener('resize', syncRadius);
+  }, []);
 
   const updatePos = (clientX, clientY) => {
     if (!containerRef.current) return;

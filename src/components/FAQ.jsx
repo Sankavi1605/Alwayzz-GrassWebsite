@@ -70,13 +70,13 @@ export default function FAQ() {
                 <button
                   className="faq-question"
                   onClick={() => setOpenIndex(isOpen ? -1 : idx)}
-                  style={{ color: '#0a0a0a', padding: '22px 28px' }}
+                  style={{ color: '#0a0a0a' }}
                 >
-                  <span style={{ fontWeight: 600, fontSize: '18px' }}>{faq.q}</span>
+                  <span style={{ fontWeight: 600 }}>{faq.q}</span>
                   {isOpen ? <Minus size={20} style={{ color: '#0a0a0a' }} /> : <Plus size={20} style={{ color: '#0a0a0a' }} />}
                 </button>
                 {isOpen && (
-                  <div className="faq-answer" style={{ color: '#222222', fontSize: '15px', fontWeight: 500, padding: '0 28px 22px', lineHeight: 1.6 }}>
+                  <div className="faq-answer" style={{ color: '#222222', fontSize: '15px', fontWeight: 500, lineHeight: 1.6 }}>
                     {faq.a}
                   </div>
                 )}
