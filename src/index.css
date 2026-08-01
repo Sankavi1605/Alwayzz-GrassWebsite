@@ -22,8 +22,10 @@
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --display-axes: 'SOFT' 60, 'WONK' 1;
 
-  /* Grass fill used by .grass-text (photo + green fallback underneath) */
-  --grass-texture: url("https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260713_140344_79e1296a-86d7-43fd-9b5f-63ffe560f291.png");
+  /* Grass fill used by .grass-text. Real lawn macro (Jason Dent / Unsplash,
+     free for commercial use) — avg rgb(41,86,33) with strong blade contrast.
+     The site's own foliage art averages rgb(37,36,19) and read as black. */
+  --grass-texture: url("https://images.unsplash.com/photo-1544914379-806667cd9489?w=1600&q=75&auto=format&fit=crop");
   --grass-fallback: #2c5f2d;
 }
 
@@ -98,17 +100,16 @@ body::before {
 @supports ((-webkit-background-clip: text) or (background-clip: text)) {
   .grass-text {
     background-color: var(--grass-fallback);
-    /* Three stacked layers, top to bottom:
-       1. fine blade-like streaks
-       2. grass-green wash (the photo alone reads near-black, ~rgb(37,36,19))
-       3. the real foliage photo, supplying grain and tonal variation */
+    /* The photo carries the texture on its own. At `cover` the blades land
+       roughly one stroke-width wide at any font size, so they stay readable
+       AS grass — a flat green wash on top just smothers them. Only a whisper
+       of shading sits above it for depth. */
     background-image:
-      repeating-linear-gradient(84deg, rgba(255, 255, 255, 0.15) 0 1.5px, rgba(255, 255, 255, 0) 1.5px 6px),
-      linear-gradient(165deg, rgba(124, 186, 80, 0.88) 0%, rgba(64, 140, 66, 0.9) 48%, rgba(38, 94, 40, 0.93) 100%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.14) 0%, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.18) 100%),
       var(--grass-texture);
-    background-size: auto, auto, cover;
-    background-position: center, center, center 62%;
-    background-repeat: repeat, no-repeat, no-repeat;
+    background-size: auto, cover;
+    background-position: center, center 55%;
+    background-repeat: no-repeat, no-repeat;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
