@@ -17,7 +17,7 @@ export default function FinalCTA({ onBookClick, onViewPlansClick }) {
             <span className="green-dot" /> 2 slots available for this month
           </div>
 
-          <h2 className="final-cta-title" style={{ color: '#ffffff', textShadow: '0 2px 10px rgba(0, 0, 0, 0.8)' }}>
+          <h2 className="final-cta-title grass-text">
             Supercharge your brand output with <span className="serif italic">alwayzz</span>.
           </h2>
 

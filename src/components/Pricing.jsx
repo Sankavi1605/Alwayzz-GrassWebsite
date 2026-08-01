@@ -7,7 +7,7 @@ export default function Pricing({ onBookClick }) {
     <section id="plans" className="section-container pricing-section" style={{ scrollMarginTop: '120px' }}>
       <div className="section-header" style={{ textAlign: 'center', alignItems: 'center' }}>
         <span className="section-tag">Transparent Pricing</span>
-        <h2 className="section-title">
+        <h2 className="section-title grass-text">
           Simple plans, <span className="serif italic">no hidden fees</span>.
         </h2>
         <p className="section-subtitle">

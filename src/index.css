@@ -23,10 +23,11 @@
   --display-axes: 'SOFT' 60, 'WONK' 1;
 
   /* Grass fill used by .grass-text. Real lawn macro (Jason Dent / Unsplash,
-     free for commercial use) — avg rgb(41,86,33) with strong blade contrast.
-     The site's own foliage art averages rgb(37,36,19) and read as black. */
-  --grass-texture: url("https://images.unsplash.com/photo-1544914379-806667cd9489?w=1600&q=75&auto=format&fit=crop");
-  --grass-fallback: #2c5f2d;
+     free for commercial use), colour-graded at the CDN to match the moss
+     globe in the hero: bri/sat/hue push it from a dark rgb(40,84,31) to a
+     lush yellow-green rgb(79,138,56), and con=14 makes the blades pop. */
+  --grass-texture: url("https://images.unsplash.com/photo-1544914379-806667cd9489?w=1600&q=75&auto=format&fit=crop&bri=22&sat=34&hue=-8&con=14");
+  --grass-fallback: #4f8c38;
 }
 
 html {
@@ -114,9 +115,20 @@ body::before {
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
-    /* drop-shadow (not text-shadow) so the halo sits behind the clipped
-       glyphs instead of showing through them */
-    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.28));
+    /* Any inherited text-shadow would paint straight through the transparent
+       glyphs and muddy the grass — use drop-shadow, which sits behind them. */
+    text-shadow: none;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35));
+  }
+
+  /* Over the dark forest / video / dark card sections the green needs a
+     light halo to stay legible. */
+  .capabilities-wrapper .grass-text,
+  .faq-video-section-wrapper .grass-text,
+  .glass-card-under .grass-text {
+    filter:
+      drop-shadow(0 0 7px rgba(255, 255, 255, 0.4))
+      drop-shadow(0 2px 4px rgba(0, 0, 0, 0.55));
   }
 }
 
@@ -1017,7 +1029,6 @@ body::before {
   font-size: 36px;
   font-weight: 800;
   letter-spacing: -0.05em;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.85);
   line-height: 1.15;
 }
 
@@ -1046,9 +1057,6 @@ body::before {
   background: #ffffff;
 }
 
-.section-title1 {
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-}
 
 /* Liquid Glass Cards Across ALL Components */
 .capabilities-grid {

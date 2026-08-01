@@ -188,7 +188,7 @@ export default function Capabilities() {
       <section id="capabilities" className="section-container" style={{ position: 'relative', zIndex: 40 }}>
         <div className="section-header">
           <span className="section-tag">Capabilities</span>
-          <h2 className="section-title1">
+          <h2 className="section-title1 grass-text">
             Full-spectrum design & tech <span className="serif italic">expertise</span>.
           </h2>
           <p className="section-subtitle">

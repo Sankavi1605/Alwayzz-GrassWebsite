@@ -44,7 +44,7 @@ export default function FAQ() {
           <span className="section-tag liquid-glass" style={{ color: '#ffffff', background: 'rgba(255,255,255,0.2)', border: '1px solid rgba(255,255,255,0.4)' }}>
             Got Questions?
           </span>
-          <h2 className="section-title" style={{ color: '#ffffff', textShadow: '0 2px 14px rgba(0,0,0,0.6)' }}>
+          <h2 className="section-title grass-text">
             Frequently asked <span className="serif italic">questions</span>.
           </h2>
           <p className="section-subtitle" style={{ color: 'rgba(255,255,255,0.92)', textShadow: '0 1px 6px rgba(0,0,0,0.6)' }}>
