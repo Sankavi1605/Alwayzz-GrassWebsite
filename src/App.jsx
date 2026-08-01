@@ -41,6 +41,37 @@ export default function App() {
 
   return (
     <div className="app-main">
+      {/*
+        Ragged edge for .grass-text. Cropping a photo to a glyph leaves a
+        vector-perfect outline, which is exactly what makes it read as a
+        cut-out rather than as grass. feTurbulence generates organic noise and
+        feDisplacementMap uses it to push the edge pixels around, so blades
+        break the silhouette. Finer noise vertically (0.12 vs 0.05) makes the
+        displacement spike upward like blades rather than wobble sideways.
+        The -sm variant is used on phones: displacement scale is in absolute
+        px, so the full-strength filter would eat a 29px headline.
+      */}
+      <svg aria-hidden="true" focusable="false" width="0" height="0" className="svg-filter-defs">
+        <defs>
+          <filter
+            id="grass-edge"
+            x="-12%" y="-16%" width="124%" height="132%"
+            colorInterpolationFilters="sRGB"
+          >
+            <feTurbulence type="fractalNoise" baseFrequency="0.05 0.12" numOctaves="4" seed="9" result="grassNoise" />
+            <feDisplacementMap in="SourceGraphic" in2="grassNoise" scale="5" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+          <filter
+            id="grass-edge-sm"
+            x="-12%" y="-16%" width="124%" height="132%"
+            colorInterpolationFilters="sRGB"
+          >
+            <feTurbulence type="fractalNoise" baseFrequency="0.08 0.18" numOctaves="3" seed="9" result="grassNoiseSm" />
+            <feDisplacementMap in="SourceGraphic" in2="grassNoiseSm" scale="2" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+        </defs>
+      </svg>
+
       {/* 3-Layer Dot Circle Fullscreen Loading Page */}
       <LoadingScreen isLoading={isLoading} />
       {/* Global Hero Pulse Curve Lines (Running across ALL page sections) */}
