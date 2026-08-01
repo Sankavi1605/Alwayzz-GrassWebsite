@@ -968,6 +968,25 @@ body::before {
   max-width: 380px;
 }
 
+/* Capabilities sits on the dark forest artwork, so its copy runs light */
+.capabilities-wrapper .section-subtitle {
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.55);
+}
+
+.capabilities-wrapper .section-tag {
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.55);
+}
+
+.capabilities-wrapper .section-tag::before {
+  background: #ffffff;
+}
+
+.section-title1 {
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
 /* Liquid Glass Cards Across ALL Components */
 .capabilities-grid {
   display: grid;
@@ -1804,7 +1823,7 @@ body::before {
   }
 
   .menu-pill {
-    padding: 9px 16px;
+    padding: 12px 18px;
     font-size: 13px;
   }
 
@@ -1814,6 +1833,7 @@ body::before {
 
   .drawer-link {
     font-size: 32px;
+    padding: 6px 14px;
   }
 
   .drawer-links {
@@ -1826,7 +1846,7 @@ body::before {
 
   .hero-section {
     min-height: 660px;
-    padding: 100px 18px 60px;
+    padding: 100px 20px 60px;
   }
 
   .hero-giant-title {
@@ -1886,8 +1906,16 @@ body::before {
     padding: 60px 20px;
   }
 
+  /* Every section header centers on phones so gutters and rag stay consistent */
   .section-header {
     margin-bottom: 34px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .section-title,
+  .section-subtitle {
+    max-width: 100%;
   }
 
   .section-title,
@@ -2062,6 +2090,15 @@ body::before {
     max-width: 100%;
   }
 
+  .footer-column {
+    gap: 2px;
+  }
+
+  /* Comfortable tap targets for the stacked footer links */
+  .footer-link {
+    padding: 11px 0;
+  }
+
   .footer-bottom {
     flex-direction: column;
     gap: 16px;
@@ -2097,7 +2134,7 @@ body::before {
 @media (max-width: 479px) {
   .hero-section {
     min-height: 580px;
-    padding: 92px 14px 52px;
+    padding: 92px 20px 52px;
   }
 
   .hero-giant-title {
@@ -2126,7 +2163,7 @@ body::before {
   }
 
   .section-container {
-    padding: 48px 16px;
+    padding: 48px 20px;
   }
 
   .section-title,
