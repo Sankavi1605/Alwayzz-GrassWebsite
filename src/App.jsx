@@ -131,12 +131,12 @@ export default function App() {
       <div className="middle-bg-section-1">
         <section className="section-container">
           <div className="section-header split-left-header">
-            <span className="section-tag">Visual Craft</span>
+            <span className="section-tag">The craft</span>
             <h2 className="section-title grass-text">
-              Design & engineering <span className="serif italic">harmony</span>.
+              Design and engineering, <span className="serif italic">same room</span>.
             </h2>
             <p className="section-subtitle">
-              Uncompromising aesthetics engineered for modern digital experiences.
+              The people drawing it are the people building it, so nothing gets lost on the handoff.
             </p>
           </div>
         </section>
@@ -151,12 +151,12 @@ export default function App() {
       <div className="middle-bg-section-2">
         <section className="section-container" style={{ padding: '0 20px' }}>
           <div className="section-header centered stone-sign-header">
-            <span className="section-tag">Built for Speed</span>
+            <span className="section-tag">Why we are quick</span>
             <h2 className="section-title carved-text">
-              Crafted for ambitious <span className="serif italic">scale</span>.
+              Move fast, <span className="serif italic">keep the craft</span>.
             </h2>
             <p className="section-subtitle">
-              Senior design capability delivered on demand with zero contract friction or slow corporate overhead.
+              Senior hands on your work from day one. No onboarding month, no change orders, no year-long contract.
             </p>
           </div>
         </section>

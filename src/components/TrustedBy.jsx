@@ -20,7 +20,7 @@ export default function TrustedBy() {
   return (
     <section className="trusted-section">
       <div className="trusted-label">
-        Partnered with top-tier companies globally
+        Work shipped for teams like
       </div>
 
       <div className="trusted-marquee-wrapper">

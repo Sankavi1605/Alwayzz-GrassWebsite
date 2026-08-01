@@ -200,17 +200,6 @@ body::before {
   }
 }
 
-@keyframes pulse-dot {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.25);
-    opacity: 0.75;
-  }
-}
-
 /* ==========================================================================
    LIQUID GLASS UTILITIES (Exact Specification for Cards & UI)
    ========================================================================== */
@@ -700,16 +689,6 @@ body::before {
   letter-spacing: -0.02em;
 }
 
-.green-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: rgb(29, 204, 93);
-  display: inline-block;
-  flex-shrink: 0;
-  animation: pulse-dot 2s infinite ease-in-out;
-}
-
 /* TrustedBy Section */
 .trusted-section {
   padding: 36px 36px 60px;
@@ -863,15 +842,6 @@ body::before {
   display: flex;
   align-items: center;
   gap: 8px;
-}
-
-.section-tag::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--text);
-  display: inline-block;
 }
 
 .section-title {
@@ -1129,10 +1099,6 @@ body::before {
 .capabilities-wrapper .section-tag {
   color: rgba(255, 255, 255, 0.92);
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.55);
-}
-
-.capabilities-wrapper .section-tag::before {
-  background: #ffffff;
 }
 
 

@@ -85,7 +85,7 @@ export default function Navbar({ onBookClick }) {
         </div>
 
         <div className="drawer-footer">
-          <p>© {new Date().getFullYear()} Alwayzz Inc. All rights reserved. Premium creative on demand.</p>
+          <p>© {new Date().getFullYear()} Alwayzz Inc. Made in New York.</p>
         </div>
       </div>
     </>

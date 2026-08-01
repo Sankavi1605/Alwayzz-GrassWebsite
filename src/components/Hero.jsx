@@ -45,7 +45,7 @@ export default function Hero({ onBookClick, onViewPlansClick }) {
             <div className="book-text-stack">
               <span className="book-title">Chat for 15 minutes</span>
               <span className="book-sub">
-                <span className="green-dot" /> Pick a slot
+                Pick a slot
               </span>
             </div>
           </button>

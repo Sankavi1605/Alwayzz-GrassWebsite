@@ -46,25 +46,25 @@ export default function Capabilities() {
     {
       num: '01',
       title: 'Brand & Visual Systems',
-      desc: 'We construct timeless visual identities, typography frameworks, logo systems, and comprehensive brand guidelines that scale across every touchpoint.',
+      desc: 'Logos, type, colour, and the rules that hold them together. Built so the fiftieth asset looks as considered as the first.',
       tags: ['Logo Design', 'Design Systems', 'Brand Guidelines', 'Typography', 'Iconography', 'Packaging'],
     },
     {
       num: '02',
       title: 'Web & App Development',
-      desc: 'High-performance React, Next.js, and Webflow websites built with pixel perfection, fast load speeds, fluid micro-interactions, and tight typography.',
+      desc: 'React, Next.js and Webflow builds that stay quick on a bad train connection. We sweat the load time as much as the layout.',
       tags: ['React / Vite', 'Next.js', 'Webflow', 'Tailwind & Custom CSS', 'Headless CMS', 'SEO Optimization'],
     },
     {
       num: '03',
       title: 'Motion & Creative Video',
-      desc: 'Engaging 3D animations, product launch videos, interactive Rive web animations, and promotional graphics that capture attention instantly.',
+      desc: 'Launch films, 3D loops, Rive animations. The kind of thing that stops a thumb mid-scroll.',
       tags: ['3D Motion Design', 'Rive Animations', 'Product Launch Teasers', 'Lottie Icons', 'UI Micro-Interactions'],
     },
     {
       num: '04',
       title: 'Product Design & UX',
-      desc: 'End-to-end Figma UI/UX prototypes, user journey mapping, design system components, and intuitive SaaS app dashboards built for conversion.',
+      desc: 'Flows, prototypes, dashboards. We map how people actually move through the thing before we make it handsome.',
       tags: ['Figma Libraries', 'User Flow', 'SaaS Dashboards', 'Mobile Apps', 'Design Tokens', 'Usability Audits'],
     },
   ];
@@ -187,12 +187,12 @@ export default function Capabilities() {
       {/* Content Layer (Over Background & Video Layers) */}
       <section id="capabilities" className="section-container" style={{ position: 'relative', zIndex: 40 }}>
         <div className="section-header">
-          <span className="section-tag">Capabilities</span>
+          <span className="section-tag">What we make</span>
           <h2 className="section-title1 grass-text">
-            Full-spectrum design & tech <span className="serif italic">expertise</span>.
+            One team for <span className="serif italic">the whole stack</span>.
           </h2>
           <p className="section-subtitle">
-            Everything your brand needs to look world-class and launch faster without managing multiple freelancers.
+            Instead of briefing four freelancers who have never met each other, you brief us once.
           </p>
         </div>
 

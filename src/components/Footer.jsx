@@ -23,7 +23,7 @@ export default function Footer({ onBookClick }) {
             Alwayzz<span className="logo-reg">®</span>
           </a>
           <p className="footer-desc">
-            A flexible design & engineering partnership for founders, brands, and agencies who demand craft.
+            A design and engineering partner for founders who care how the thing is made.
           </p>
           <div style={{ fontSize: '13px', color: 'var(--muted)', marginTop: '8px' }}>
             New York, NY — <span style={{ fontFamily: 'monospace', color: 'var(--text)' }}>{estTime || '10:00 AM EST'}</span>
@@ -57,7 +57,7 @@ export default function Footer({ onBookClick }) {
 
       <div className="footer-bottom">
         <span>© {new Date().getFullYear()} Alwayzz Studio Inc. All rights reserved.</span>
-        <span>Crafted with tight negative letter-spacing & React + Vite.</span>
+        <span>Built in New York, mostly after dark.</span>
       </div>
     </footer>
   );

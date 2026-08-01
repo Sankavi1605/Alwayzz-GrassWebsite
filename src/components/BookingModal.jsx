@@ -57,9 +57,9 @@ export default function BookingModal({ isOpen, onClose, selectedProject }) {
             <div style={{ width: '56px', height: '56px', borderRadius: '50%', background: 'rgba(23, 201, 100, 0.15)', color: 'var(--green)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px' }}>
               <Check size={28} />
             </div>
-            <h3 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '8px' }}>Slot Requested!</h3>
+            <h3 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '8px' }}>You are on the calendar</h3>
             <p style={{ fontSize: '14px', color: 'var(--muted)', marginBottom: '24px', lineHeight: 1.5 }}>
-              Thank you, {formData.name || 'there'}. We have sent a calendar invite link to <strong>{formData.email || 'your email'}</strong>. Talk soon!
+              Thanks {formData.name || 'there'} — an invite is on its way to <strong>{formData.email || 'your email'}</strong>. Talk soon.
             </p>
             <button className="primary-btn" style={{ width: '100%' }} onClick={handleClose}>
               Done
@@ -74,7 +74,7 @@ export default function BookingModal({ isOpen, onClose, selectedProject }) {
               </h3>
             </div>
             <p style={{ fontSize: '14px', color: 'var(--muted)', marginBottom: '24px' }}>
-              Pick a slot to discuss your design backlog, team fit, and start your first sprint in 48h.
+              Tell us what is stuck. We will say whether we can help, and how quickly.
             </p>
 
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>

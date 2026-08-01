@@ -6,20 +6,20 @@ export default function FAQ() {
 
   const faqs = [
     {
-      q: 'How fast will I receive my designs or code?',
-      a: 'Most single-page designs, UI components, brand updates, or code tasks are delivered within 48 business hours.',
+      q: 'How fast does work come back?',
+      a: 'Most single pages, components and brand updates land within 48 business hours. Anything bigger we scope up front, so you are never left guessing.',
     },
     {
-      q: 'What does "Unlimited Revisions" mean?',
-      a: 'It means we continue refining and revising your deliverables until you are 100% satisfied with the outcome.',
+      q: 'Is unlimited revisions actually unlimited?',
+      a: 'Yes. We keep going until you are happy with it. In practice it is rarely more than two rounds, because we ask the awkward questions early.',
     },
     {
-      q: 'How does the pause feature work?',
-      a: 'If you use the service for 10 days and then decide to pause, the remaining 21 days stay banked in your account for later.',
+      q: 'What if we go quiet for a month?',
+      a: 'Pause it. Use ten days of a cycle and the other twenty-one sit in your account until you come back for them.',
     },
     {
-      q: 'Who owns the intellectual property and copyright?',
-      a: 'You do! You own 100% of all intellectual property, design files, code repositories, and deliverables.',
+      q: 'Who owns the work?',
+      a: 'You do. Every file, every repository, from the moment we hand it over.',
     },
   ];
 
@@ -42,13 +42,13 @@ export default function FAQ() {
       <section id="faqs" className="section-container" style={{ position: 'relative', zIndex: 10, padding: '40px 20px' }}>
         <div className="section-header centered">
           <span className="section-tag liquid-glass" style={{ color: '#ffffff', background: 'rgba(255,255,255,0.2)', border: '1px solid rgba(255,255,255,0.4)' }}>
-            Got Questions?
+            Questions
           </span>
           <h2 className="section-title grass-text">
-            Frequently asked <span className="serif italic">questions</span>.
+            The things people <span className="serif italic">ask first</span>.
           </h2>
           <p className="section-subtitle" style={{ color: 'rgba(255,255,255,0.92)', textShadow: '0 1px 6px rgba(0,0,0,0.6)' }}>
-            Everything you need to know about our subscription model, turnaround times, and ownership.
+            Turnaround, revisions, pausing, and who owns what at the end of it.
           </p>
         </div>
 

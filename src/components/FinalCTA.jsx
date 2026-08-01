@@ -14,15 +14,15 @@ export default function FinalCTA({ onBookClick, onViewPlansClick }) {
         {/* Glass Card Content (Sitting Under / Inside the Wooden Branch Frame) */}
         <div className="final-cta-card glass-card-under">
           <div className="cta-slot-badge">
-            <span className="green-dot" /> 2 slots available for this month
+            Taking on two new projects this month
           </div>
 
           <h2 className="final-cta-title grass-text">
-            Supercharge your brand output with <span className="serif italic">alwayzz</span>.
+            Let us make something <span className="serif italic">worth keeping</span>.
           </h2>
 
           <p className="final-cta-subtitle" style={{ color: 'rgba(255, 255, 255, 0.85)', textShadow: '0 1px 4px rgba(0, 0, 0, 0.8)' }}>
-            Join leading founders and agencies who get senior-level craft delivered on demand.
+            Fifteen minutes, no deck. We will tell you honestly whether we are the right fit.
           </p>
 
           <div className="cta-row" style={{ marginTop: '8px' }}>
@@ -45,7 +45,7 @@ export default function FinalCTA({ onBookClick, onViewPlansClick }) {
               <div className="book-text-stack">
                 <span className="book-title" style={{ color: '#ffffff', fontWeight: 600 }}>Book a 15-Min Intro Call</span>
                 <span className="book-sub" style={{ color: 'rgba(255, 255, 255, 0.75)' }}>
-                  <span className="green-dot" /> Instant scheduling
+                  Pick a time that suits
                 </span>
               </div>
             </button>

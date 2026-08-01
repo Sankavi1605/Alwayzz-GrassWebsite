@@ -6,12 +6,12 @@ export default function Pricing({ onBookClick }) {
   return (
     <section id="plans" className="section-container pricing-section" style={{ scrollMarginTop: '120px' }}>
       <div className="section-header" style={{ textAlign: 'center', alignItems: 'center' }}>
-        <span className="section-tag">Transparent Pricing</span>
+        <span className="section-tag">Pricing</span>
         <h2 className="section-title grass-text">
-          Simple plans, <span className="serif italic">no hidden fees</span>.
+          One price, <span className="serif italic">no surprises</span>.
         </h2>
         <p className="section-subtitle">
-          One predictable flat rate. Pause or cancel whenever your design needs decrease.
+          The same number every month. Quiet quarter? Pause it and pick up where you left off.
         </p>
       </div>
 
@@ -43,7 +43,7 @@ export default function Pricing({ onBookClick }) {
           <div className="board-card-inner">
             <h3 className="plan-name" style={{ color: '#ffffff', fontSize: '22px', fontWeight: 800, textShadow: '0 2px 4px rgba(0,0,0,0.9)' }}>Standard</h3>
             <p className="plan-desc" style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '12px', marginBottom: '10px', textShadow: '0 1px 3px rgba(0,0,0,0.9)' }}>
-              Ongoing design speed for growing brands.
+              For teams with a steady trickle of work.
             </p>
             
             <div className="plan-price-wrapper" style={{ marginBottom: '12px' }}>
@@ -55,16 +55,16 @@ export default function Pricing({ onBookClick }) {
 
             <ul className="plan-features-list" style={{ gap: '6px', marginBottom: '16px', listStyle: 'none', padding: 0 }}>
               <li className="plan-feature-item" style={{ color: '#ffffff', fontSize: '12px', fontWeight: 600, textShadow: '0 1px 2px rgba(0,0,0,0.9)', textAlign: 'center' }}>
-                1 active request at a time
+                One request in flight
               </li>
               <li className="plan-feature-item" style={{ color: '#ffffff', fontSize: '12px', fontWeight: 600, textShadow: '0 1px 2px rgba(0,0,0,0.9)', textAlign: 'center' }}>
-                Avg 48-hour delivery turnaround
+                Most things back within 48 hours
               </li>
               <li className="plan-feature-item" style={{ color: '#ffffff', fontSize: '12px', fontWeight: 600, textShadow: '0 1px 2px rgba(0,0,0,0.9)', textAlign: 'center' }}>
-                Unlimited revisions & scope edits
+                Revisions until you are happy
               </li>
               <li className="plan-feature-item" style={{ color: '#ffffff', fontSize: '12px', fontWeight: 600, textShadow: '0 1px 2px rgba(0,0,0,0.9)', textAlign: 'center' }}>
-                Pause or cancel anytime
+                Pause or leave whenever
               </li>
             </ul>
           </div>
@@ -82,7 +82,7 @@ export default function Pricing({ onBookClick }) {
           <div className="board-card-inner">
             <h3 className="plan-name" style={{ color: '#ffffff', fontSize: '22px', fontWeight: 800, textShadow: '0 2px 4px rgba(0,0,0,0.9)' }}>Double Power</h3>
             <p className="plan-desc" style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '12px', marginBottom: '10px', textShadow: '0 1px 3px rgba(0,0,0,0.9)' }}>
-              High design volume with double output.
+              For teams shipping faster than one queue allows.
             </p>
             
             <div className="plan-price-wrapper" style={{ marginBottom: '12px' }}>
@@ -94,16 +94,16 @@ export default function Pricing({ onBookClick }) {
 
             <ul className="plan-features-list" style={{ gap: '6px', marginBottom: '16px', listStyle: 'none', padding: 0 }}>
               <li className="plan-feature-item" style={{ color: '#ffffff', fontSize: '12px', fontWeight: 600, textShadow: '0 1px 2px rgba(0,0,0,0.9)', textAlign: 'center' }}>
-                2 active requests simultaneously
+                Two requests in flight
               </li>
               <li className="plan-feature-item" style={{ color: '#ffffff', fontSize: '12px', fontWeight: 600, textShadow: '0 1px 2px rgba(0,0,0,0.9)', textAlign: 'center' }}>
-                Priority 24-48h turnaround
+                First in the queue, 24 to 48 hours
               </li>
               <li className="plan-feature-item" style={{ color: '#ffffff', fontSize: '12px', fontWeight: 600, textShadow: '0 1px 2px rgba(0,0,0,0.9)', textAlign: 'center' }}>
-                Dedicated Creative Director
+                A creative director who knows your brand
               </li>
               <li className="plan-feature-item" style={{ color: '#ffffff', fontSize: '12px', fontWeight: 600, textShadow: '0 1px 2px rgba(0,0,0,0.9)', textAlign: 'center' }}>
-                Private Slack/Discord channel
+                Your own Slack channel
               </li>
             </ul>
           </div>
@@ -118,7 +118,7 @@ export default function Pricing({ onBookClick }) {
           <div className="board-card-inner">
             <h3 className="plan-name" style={{ color: '#ffffff', fontSize: '22px', fontWeight: 800, textShadow: '0 2px 4px rgba(0,0,0,0.9)' }}>Custom Scope</h3>
             <p className="plan-desc" style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '12px', marginBottom: '10px', textShadow: '0 1px 3px rgba(0,0,0,0.9)' }}>
-              Tailored sprints for major launches.
+              For a launch that needs everyone at once.
             </p>
             
             <div className="plan-price-wrapper" style={{ marginBottom: '12px' }}>
@@ -128,16 +128,16 @@ export default function Pricing({ onBookClick }) {
 
             <ul className="plan-features-list" style={{ gap: '6px', marginBottom: '16px', listStyle: 'none', padding: 0 }}>
               <li className="plan-feature-item" style={{ color: '#ffffff', fontSize: '12px', fontWeight: 600, textShadow: '0 1px 2px rgba(0,0,0,0.9)', textAlign: 'center' }}>
-                Dedicated full agency pod
+                A full pod, yours for the sprint
               </li>
               <li className="plan-feature-item" style={{ color: '#ffffff', fontSize: '12px', fontWeight: 600, textShadow: '0 1px 2px rgba(0,0,0,0.9)', textAlign: 'center' }}>
-                Guaranteed launch deadline SLA
+                Your launch date, in writing
               </li>
               <li className="plan-feature-item" style={{ color: '#ffffff', fontSize: '12.5px', fontWeight: 600, textShadow: '0 1px 2px rgba(0,0,0,0.9)', textAlign: 'center' }}>
-                Complete brand + web overhaul
+                Brand and site, end to end
               </li>
               <li className="plan-feature-item" style={{ color: '#ffffff', fontSize: '12px', fontWeight: 600, textShadow: '0 1px 2px rgba(0,0,0,0.9)', textAlign: 'center' }}>
-                Enterprise NDA & contracts
+                NDAs and procurement, handled
               </li>
             </ul>
           </div>
