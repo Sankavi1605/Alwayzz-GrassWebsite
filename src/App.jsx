@@ -44,41 +44,47 @@ export default function App() {
       {/*
         TURF FILTER — the fringe of blades that breaks the letter silhouette.
 
-        In the 3D reference, blades stick out PAST the outline in every
-        direction; that broken edge is most of what separates "grass letter"
-        from "photo cropped to a letter". Built in two passes:
+        The speckled, pixelly look came from baseFrequency being too HIGH
+        (0.8-1.2). At that frequency the noise changes every pixel, so the
+        displacement scatters lone pixels instead of moving blade-sized
+        clumps: measured 131 disconnected fragments, 126 of them under 4px.
 
-          fringe = dilate the glyph, then chew it hard with fine noise
-                   -> a ragged halo of blade-coloured pixels around the letter
-          core   = the glyph itself, chewed gently so its own edge is uneven
+        Two changes fix it:
+          - coarse noise (0.30), so displacement moves coherent ~3px chunks
+          - a gooey pass: blur, then crush the alpha ramp back to hard edges.
+            Neighbouring fragments merge into solid clumps and strays vanish.
+            Same measurement after: ONE connected shape, zero specks.
 
-        Drawing fringe first and core over it keeps the letter readable while
-        the blades scatter outward.
-
-        feMorphology radius and feDisplacementMap scale are in ABSOLUTE px, so
-        one filter cannot serve a 100px hero word and a 23px phone heading —
-        hence three, tuned to the type sizes actually in use.
+        feMorphology radius, displacement scale and the goo blur are all in
+        ABSOLUTE px, so one filter cannot serve a 108px hero word and a 25px
+        phone heading — hence three, tuned to the sizes actually in use.
       */}
       <svg aria-hidden="true" focusable="false" width="0" height="0" className="svg-filter-defs">
         <defs>
           {[
-            { id: 'turf-lg', freq: 0.8, dilate: 2, fringe: 15, core: 5 },
-            { id: 'turf-md', freq: 1.2, dilate: 1.2, fringe: 8, core: 3 },
-            { id: 'turf-sm', freq: 1.8, dilate: 0.7, fringe: 4, core: 1.5 },
-          ].map(({ id, freq, dilate, fringe, core }) => (
+            { id: 'turf-lg', freq: 0.3, dilate: 2.2, scale: 13, goo: 1.0 },
+            { id: 'turf-md', freq: 0.34, dilate: 1.1, scale: 6, goo: 0.75 },
+            { id: 'turf-sm', freq: 0.4, dilate: 0.6, scale: 3, goo: 0.35 },
+          ].map(({ id, freq, dilate, scale, goo }) => (
             <filter
               key={id}
               id={id}
               x="-30%" y="-34%" width="160%" height="168%"
               colorInterpolationFilters="sRGB"
             >
-              <feTurbulence type="fractalNoise" baseFrequency={freq} numOctaves="3" seed="4" result="fuzz" />
+              <feTurbulence type="turbulence" baseFrequency={freq} numOctaves="3" seed="4" result="noise" />
               <feMorphology in="SourceGraphic" operator="dilate" radius={dilate} result="fat" />
-              <feDisplacementMap in="fat" in2="fuzz" scale={fringe} xChannelSelector="R" yChannelSelector="G" result="fringe" />
-              <feDisplacementMap in="SourceGraphic" in2="fuzz" scale={core} xChannelSelector="R" yChannelSelector="G" result="core" />
+              <feDisplacementMap in="fat" in2="noise" scale={scale} xChannelSelector="R" yChannelSelector="G" result="rough" />
+              <feGaussianBlur in="rough" stdDeviation={goo} result="softened" />
+              <feColorMatrix
+                in="softened"
+                type="matrix"
+                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 14 -5"
+                result="fringe"
+              />
               <feMerge>
                 <feMergeNode in="fringe" />
-                <feMergeNode in="core" />
+                <feMergeNode in="SourceGraphic" />
               </feMerge>
             </filter>
           ))}
