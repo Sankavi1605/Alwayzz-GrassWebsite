@@ -26,17 +26,17 @@
      actually cut. Used for text carved into the hanging stone sign. */
   --font-stone: 'Cinzel', 'Fraunces', Georgia, serif;
 
-  /* Grass words need LOW-CONTRAST, uniformly fat strokes. Fraunces is a
-     high-contrast serif — its hairlines are only 2-3px, too thin to hold a
-     single blade, which is what made the effect read as a cropped photo. */
-  --font-grass: 'Bricolage Grotesque', 'Fraunces', Georgia, serif;
+  /* Grass words need ultra-fat, UNIFORM strokes with ROUNDED terminals —
+     the letterform in the 3D reference render. Round ends read as a grown
+     clump; flat ends read as something cut out. */
+  --font-grass: 'Baloo 2', 'Trebuchet MS', system-ui, sans-serif;
 
   /* Grass fill used by .grass-text. Real lawn macro (Jason Dent / Unsplash,
-     free for commercial use), colour-graded at the CDN to match the moss
-     globe in the hero: bri/sat/hue push it from a dark rgb(40,84,31) to a
-     lush yellow-green rgb(79,138,56), and con=14 makes the blades pop. */
-  --grass-texture: url("https://images.unsplash.com/photo-1544914379-806667cd9489?w=1600&q=75&auto=format&fit=crop&bri=22&sat=34&hue=-8&con=14");
-  --grass-fallback: #4f8c38;
+     free for commercial use), graded at the CDN to the vivid yellow-green of
+     the 3D reference render: measured rgb(108,161,69) against a ~rgb(105,172,60)
+     target. con=20 keeps the blade edges crisp at the grade. */
+  --grass-texture: url("https://images.unsplash.com/photo-1544914379-806667cd9489?w=1600&q=75&auto=format&fit=crop&bri=32&sat=66&hue=-24&con=20");
+  --grass-fallback: #6ca247;
 }
 
 html {
@@ -131,8 +131,9 @@ body::before {
   .grass-text {
     background-color: var(--grass-fallback);
     background-image:
-      /* sun on the blade tips, shade at the roots — gives the turf volume */
-      linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(0, 0, 0, 0) 42%, rgba(0, 0, 0, 0.22) 100%),
+      /* Volume. The reference is a lit 3D extrusion: sun catching the tips
+         top-left, ambient occlusion deepening toward the base. */
+      linear-gradient(168deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.05) 34%, rgba(0, 0, 0, 0) 58%, rgba(0, 0, 0, 0.34) 100%),
       var(--grass-texture);
     /* em-based tile => blade count per stroke is identical at every size */
     background-size: auto, 1.8em auto;
@@ -147,9 +148,17 @@ body::before {
        hard shadow is the turf's own thickness, the soft one is its cast. */
     text-shadow: none;
     filter:
-      url(#grass-edge)
-      drop-shadow(0 1px 0 rgba(24, 54, 20, 0.85))
-      drop-shadow(0 3px 5px rgba(0, 0, 0, 0.32));
+      url(#turf-md)
+      drop-shadow(0 2px 0 rgba(30, 66, 22, 0.9))
+      drop-shadow(0 4px 7px rgba(0, 0, 0, 0.3));
+  }
+
+  /* Hero words are ~100px, so they carry the coarse, long-bladed fringe. */
+  .hero-giant-title .grass-text {
+    filter:
+      url(#turf-lg)
+      drop-shadow(0 3px 0 rgba(30, 66, 22, 0.9))
+      drop-shadow(0 6px 10px rgba(0, 0, 0, 0.3));
   }
 
   /* Over the dark forest / video / dark card sections the green needs a
@@ -158,10 +167,10 @@ body::before {
   .faq-video-section-wrapper .grass-text,
   .glass-card-under .grass-text {
     filter:
-      url(#grass-edge)
-      drop-shadow(0 1px 0 rgba(24, 54, 20, 0.9))
+      url(#turf-md)
+      drop-shadow(0 2px 0 rgba(30, 66, 22, 0.95))
       drop-shadow(0 0 7px rgba(255, 255, 255, 0.4))
-      drop-shadow(0 2px 4px rgba(0, 0, 0, 0.55));
+      drop-shadow(0 3px 5px rgba(0, 0, 0, 0.55));
   }
 }
 
@@ -512,9 +521,9 @@ body::before {
 
 .hero-giant-title {
   /* Sized off the widest line, 'alwayzz(R) ON DEMAND', which sets at
-     11.31px of width per 1px of font-size in Bricolage 800. Keeping it on
-     ONE line matters: when it wraps, the 3D globe swallows a whole line. */
-  font-size: clamp(56px, 8vw, 100px);
+     10.34px of width per 1px of font-size in Baloo 2 800. Keeping it on ONE
+     line matters: when it wraps, the 3D globe swallows a whole line. */
+  font-size: clamp(56px, 8.6vw, 108px);
   font-weight: 800;
   letter-spacing: -0.025em;
   line-height: 0.95;
@@ -1879,7 +1888,7 @@ body::before {
   }
 
   .hero-giant-title {
-    font-size: clamp(46px, 7.6vw, 96px);
+    font-size: clamp(46px, 8.2vw, 96px);
   }
 
   .hero-giant-title.top-title {
@@ -1999,7 +2008,7 @@ body::before {
   /* Sized so the longest line ("alwayzz® ON DEMAND") stays on ONE line in
      Fraunces — if it wraps, the 3D globe swallows an entire line. */
   .hero-giant-title {
-    font-size: clamp(18px, 7.3vw, 56px);
+    font-size: clamp(18px, 7.9vw, 56px);
   }
 
   /* Shallower overlap on phones: the globe should graze the letter edges the
@@ -2074,12 +2083,13 @@ body::before {
     font-size: 32px;
   }
 
-  /* Displacement scale is absolute px, so the desktop-strength filter would
-     chew through small type. Swap to the gentler variant. */
-  .grass-text {
+  /* Morphology radius and displacement scale are absolute px, so the
+     desktop fringe would chew straight through 23px type. */
+  .grass-text,
+  .hero-giant-title .grass-text {
     filter:
-      url(#grass-edge-sm)
-      drop-shadow(0 1px 0 rgba(24, 54, 20, 0.85))
+      url(#turf-sm)
+      drop-shadow(0 1px 0 rgba(30, 66, 22, 0.85))
       drop-shadow(0 2px 4px rgba(0, 0, 0, 0.32));
   }
 
@@ -2087,8 +2097,8 @@ body::before {
   .faq-video-section-wrapper .grass-text,
   .glass-card-under .grass-text {
     filter:
-      url(#grass-edge-sm)
-      drop-shadow(0 1px 0 rgba(24, 54, 20, 0.9))
+      url(#turf-sm)
+      drop-shadow(0 1px 0 rgba(30, 66, 22, 0.9))
       drop-shadow(0 0 6px rgba(255, 255, 255, 0.4))
       drop-shadow(0 2px 4px rgba(0, 0, 0, 0.55));
   }

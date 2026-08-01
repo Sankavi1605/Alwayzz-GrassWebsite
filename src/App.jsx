@@ -42,33 +42,46 @@ export default function App() {
   return (
     <div className="app-main">
       {/*
-        Ragged edge for .grass-text. Cropping a photo to a glyph leaves a
-        vector-perfect outline, which is exactly what makes it read as a
-        cut-out rather than as grass. feTurbulence generates organic noise and
-        feDisplacementMap uses it to push the edge pixels around, so blades
-        break the silhouette. Finer noise vertically (0.12 vs 0.05) makes the
-        displacement spike upward like blades rather than wobble sideways.
-        The -sm variant is used on phones: displacement scale is in absolute
-        px, so the full-strength filter would eat a 29px headline.
+        TURF FILTER — the fringe of blades that breaks the letter silhouette.
+
+        In the 3D reference, blades stick out PAST the outline in every
+        direction; that broken edge is most of what separates "grass letter"
+        from "photo cropped to a letter". Built in two passes:
+
+          fringe = dilate the glyph, then chew it hard with fine noise
+                   -> a ragged halo of blade-coloured pixels around the letter
+          core   = the glyph itself, chewed gently so its own edge is uneven
+
+        Drawing fringe first and core over it keeps the letter readable while
+        the blades scatter outward.
+
+        feMorphology radius and feDisplacementMap scale are in ABSOLUTE px, so
+        one filter cannot serve a 100px hero word and a 23px phone heading —
+        hence three, tuned to the type sizes actually in use.
       */}
       <svg aria-hidden="true" focusable="false" width="0" height="0" className="svg-filter-defs">
         <defs>
-          <filter
-            id="grass-edge"
-            x="-12%" y="-16%" width="124%" height="132%"
-            colorInterpolationFilters="sRGB"
-          >
-            <feTurbulence type="fractalNoise" baseFrequency="0.05 0.12" numOctaves="4" seed="9" result="grassNoise" />
-            <feDisplacementMap in="SourceGraphic" in2="grassNoise" scale="5" xChannelSelector="R" yChannelSelector="G" />
-          </filter>
-          <filter
-            id="grass-edge-sm"
-            x="-12%" y="-16%" width="124%" height="132%"
-            colorInterpolationFilters="sRGB"
-          >
-            <feTurbulence type="fractalNoise" baseFrequency="0.08 0.18" numOctaves="3" seed="9" result="grassNoiseSm" />
-            <feDisplacementMap in="SourceGraphic" in2="grassNoiseSm" scale="2" xChannelSelector="R" yChannelSelector="G" />
-          </filter>
+          {[
+            { id: 'turf-lg', freq: 0.8, dilate: 2, fringe: 15, core: 5 },
+            { id: 'turf-md', freq: 1.2, dilate: 1.2, fringe: 8, core: 3 },
+            { id: 'turf-sm', freq: 1.8, dilate: 0.7, fringe: 4, core: 1.5 },
+          ].map(({ id, freq, dilate, fringe, core }) => (
+            <filter
+              key={id}
+              id={id}
+              x="-30%" y="-34%" width="160%" height="168%"
+              colorInterpolationFilters="sRGB"
+            >
+              <feTurbulence type="fractalNoise" baseFrequency={freq} numOctaves="3" seed="4" result="fuzz" />
+              <feMorphology in="SourceGraphic" operator="dilate" radius={dilate} result="fat" />
+              <feDisplacementMap in="fat" in2="fuzz" scale={fringe} xChannelSelector="R" yChannelSelector="G" result="fringe" />
+              <feDisplacementMap in="SourceGraphic" in2="fuzz" scale={core} xChannelSelector="R" yChannelSelector="G" result="core" />
+              <feMerge>
+                <feMergeNode in="fringe" />
+                <feMergeNode in="core" />
+              </feMerge>
+            </filter>
+          ))}
         </defs>
       </svg>
 
