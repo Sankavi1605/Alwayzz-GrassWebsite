@@ -14,6 +14,17 @@
   --border-soft: rgba(0, 0, 0, 0.08);
   --border-medium: rgba(0, 0, 0, 0.14);
   --green: #17c964;
+
+  /* Display face: Fraunces, an organic variable serif. SOFT rounds the
+     terminals, WONK swaps in the slanted/curved alternates — together they
+     read grown rather than drawn. Inter still carries all body copy. */
+  --font-display: 'Fraunces', 'Source Serif 4', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --display-axes: 'SOFT' 60, 'WONK' 1;
+
+  /* Grass fill used by .grass-text (photo + green fallback underneath) */
+  --grass-texture: url("https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260713_140344_79e1296a-86d7-43fd-9b5f-63ffe560f291.png");
+  --grass-fallback: #2c5f2d;
 }
 
 html {
@@ -52,11 +63,60 @@ body::before {
 
 /* Typography Utility Classes */
 .serif {
-  font-family: 'Source Serif 4', Georgia, serif;
+  font-family: var(--font-display);
+  font-variation-settings: var(--display-axes);
 }
 
 .italic {
   font-style: italic;
+}
+
+/* ==========================================================================
+   ORGANIC DISPLAY TYPE (Fraunces) + GRASS-TEXTURED HEADLINE FILL
+   ========================================================================== */
+
+.hero-giant-title,
+.section-title,
+.section-title1,
+.final-cta-title,
+.capability-title,
+.plan-name,
+.workflow-title,
+.portfolio-title,
+.drawer-link,
+.logo-text {
+  font-family: var(--font-display);
+  font-variation-settings: var(--display-axes);
+}
+
+/* Live text filled with real grass instead of a flat colour. Text stays
+   selectable and responsive; the solid colour below is the fallback. */
+.grass-text {
+  color: var(--grass-fallback);
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .grass-text {
+    background-color: var(--grass-fallback);
+    /* Three stacked layers, top to bottom:
+       1. fine blade-like streaks
+       2. grass-green wash (the photo alone reads near-black, ~rgb(37,36,19))
+       3. the real foliage photo, supplying grain and tonal variation */
+    background-image:
+      repeating-linear-gradient(84deg, rgba(255, 255, 255, 0.15) 0 1.5px, rgba(255, 255, 255, 0) 1.5px 6px),
+      linear-gradient(165deg, rgba(124, 186, 80, 0.88) 0%, rgba(64, 140, 66, 0.9) 48%, rgba(38, 94, 40, 0.93) 100%),
+      var(--grass-texture);
+    background-size: auto, auto, cover;
+    background-position: center, center, center 62%;
+    background-repeat: repeat, no-repeat, no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    /* drop-shadow (not text-shadow) so the halo sits behind the clipped
+       glyphs instead of showing through them */
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.28));
+  }
 }
 
 /* Keyframe Animations */
@@ -257,11 +317,11 @@ body::before {
 }
 
 .logo-text {
-  font-family: 'Source Serif 4', Georgia, serif;
+  font-family: var(--font-display);
   font-size: 30px;
   font-weight: 600;
   font-style: italic;
-  letter-spacing: -0.08em;
+  letter-spacing: -0.04em;
   color: var(--text);
   text-decoration: none;
   display: inline-flex;
@@ -410,11 +470,12 @@ body::before {
 .hero-giant-title {
   font-size: clamp(64px, 9.5vw, 120px);
   font-weight: 800;
-  letter-spacing: -0.06em;
+  letter-spacing: -0.025em;
   line-height: 0.95;
   color: var(--text);
   text-transform: uppercase;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-display);
+  font-variation-settings: var(--display-axes);
   user-select: none;
 }
 
@@ -431,16 +492,17 @@ body::before {
 }
 
 .hero-giant-title .serif.italic {
-  font-family: 'Source Serif 4', Georgia, serif;
+  font-family: var(--font-display);
   font-style: italic;
   font-weight: 600;
   text-transform: lowercase;
-  letter-spacing: -0.07em;
+  letter-spacing: -0.03em;
 }
 
 .hero-giant-title sup {
   font-family: 'Inter', sans-serif;
-  font-size: clamp(24px, 3.5vw, 40px);
+  /* Proportional to the title so it never outgrows the word at small sizes */
+  font-size: 0.34em;
   font-weight: 600;
   vertical-align: super;
   margin-left: 4px;
@@ -758,25 +820,25 @@ body::before {
 .section-title {
   font-size: 48px;
   font-weight: 600;
-  letter-spacing: -0.06em;
-  line-height: 1.1;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
   color: var(--text);
   max-width: 640px;
 }
 .section-title1 {
   font-size: 48px;
   font-weight: 600;
-  letter-spacing: -0.06em;
-  line-height: 1.1;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
   color: #ffffff;
   max-width: 640px;
 }
 
 .section-title .serif.italic {
-  font-family: 'Source Serif 4', Georgia, serif;
+  font-family: var(--font-display);
   font-style: italic;
   font-weight: 600;
-  letter-spacing: -0.07em;
+  letter-spacing: -0.03em;
 }
 
 .section-subtitle {
@@ -828,8 +890,8 @@ body::before {
   color: var(--text);
   font-size: 52px;
   font-weight: 700;
-  letter-spacing: -0.06em;
-  line-height: 1.05;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
   margin-top: 8px;
 }
 
@@ -1008,7 +1070,7 @@ body::before {
 }
 
 .capability-num {
-  font-family: 'Source Serif 4', Georgia, serif;
+  font-family: var(--font-display);
   font-size: 24px;
   font-weight: 600;
   font-style: italic;
@@ -1572,13 +1634,13 @@ body::before {
 .final-cta-title {
   font-size: 52px;
   font-weight: 600;
-  letter-spacing: -0.06em;
-  line-height: 1.05;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
   max-width: 680px;
 }
 
 .final-cta-title .serif.italic {
-  font-family: 'Source Serif 4', Georgia, serif;
+  font-family: var(--font-display);
   font-style: italic;
 }
 
@@ -1849,16 +1911,20 @@ body::before {
     padding: 100px 20px 60px;
   }
 
+  /* Sized so the longest line ("alwayzz® ON DEMAND") stays on ONE line in
+     Fraunces — if it wraps, the 3D globe swallows an entire line. */
   .hero-giant-title {
-    font-size: clamp(34px, 11vw, 56px);
+    font-size: clamp(20px, 7.8vw, 56px);
   }
 
+  /* Shallower overlap on phones: the globe should graze the letter edges the
+     way it does on desktop, not cover a full line. */
   .hero-giant-title.top-title {
-    margin-bottom: -50px;
+    margin-bottom: -26px;
   }
 
   .hero-giant-title.bottom-title {
-    margin-top: -50px;
+    margin-top: -26px;
   }
 
   .hero-interactive-reveal-container {
@@ -2137,16 +2203,12 @@ body::before {
     padding: 92px 20px 52px;
   }
 
-  .hero-giant-title {
-    font-size: clamp(28px, 10.5vw, 44px);
-  }
-
   .hero-giant-title.top-title {
-    margin-bottom: -34px;
+    margin-bottom: -18px;
   }
 
   .hero-giant-title.bottom-title {
-    margin-top: -34px;
+    margin-top: -18px;
   }
 
   .hero-interactive-reveal-container {
