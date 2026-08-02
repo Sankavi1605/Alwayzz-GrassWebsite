@@ -21,7 +21,7 @@ export default function Footer({ onBookClick }) {
     <footer className="footer" ref={revealRef}>
       <div className="footer-container">
         <div className="footer-brand" data-reveal>
-          <a href="#" className="logo-text">
+          <a href="#" className="logo-text grass-text">
             Alwayzz<span className="logo-reg">®</span>
           </a>
           <p className="footer-desc">
@@ -33,7 +33,7 @@ export default function Footer({ onBookClick }) {
         </div>
 
         <div className="footer-column" data-reveal style={{ '--reveal-delay': '90ms' }}>
-          <span className="footer-column-title">Navigation</span>
+          <span className="footer-column-title grass-text">Navigation</span>
           <a href="#projects" className="footer-link">Selected Work</a>
           <a href="#capabilities" className="footer-link">Capabilities</a>
           <a href="#plans" className="footer-link">Pricing & Plans</a>
@@ -41,7 +41,7 @@ export default function Footer({ onBookClick }) {
         </div>
 
         <div className="footer-column" data-reveal style={{ '--reveal-delay': '180ms' }}>
-          <span className="footer-column-title">Socials</span>
+          <span className="footer-column-title grass-text">Socials</span>
           <a href="https://twitter.com" target="_blank" rel="noreferrer" className="footer-link">Twitter / X</a>
           <a href="https://dribbble.com" target="_blank" rel="noreferrer" className="footer-link">Dribbble</a>
           <a href="https://read.cv" target="_blank" rel="noreferrer" className="footer-link">Read.cv</a>
@@ -49,7 +49,7 @@ export default function Footer({ onBookClick }) {
         </div>
 
         <div className="footer-column" data-reveal style={{ '--reveal-delay': '270ms' }}>
-          <span className="footer-column-title">Legal & Contact</span>
+          <span className="footer-column-title grass-text">Legal &amp; Contact</span>
           <a href="#" onClick={(e) => { e.preventDefault(); onBookClick(); }} className="footer-link">Book Intro Call</a>
           <a href="mailto:hello@alwayzz.design" className="footer-link">hello@alwayzz.design</a>
           <a href="#" className="footer-link">Privacy Policy</a>

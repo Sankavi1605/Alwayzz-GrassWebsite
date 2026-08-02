@@ -207,7 +207,7 @@ export default function Capabilities() {
               style={{ '--reveal-delay': `${i * 110}ms` }}
             >
               <span className="capability-num">{cap.num}</span>
-              <h3 className="capability-title">{cap.title}</h3>
+              <h3 className="capability-title grass-text">{cap.title}</h3>
               <p className="capability-desc">{cap.desc}</p>
               <div className="capability-tags">
                 {cap.tags.map((tag) => (

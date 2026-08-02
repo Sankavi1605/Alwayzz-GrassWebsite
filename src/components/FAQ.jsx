@@ -78,7 +78,7 @@ export default function FAQ() {
                   aria-controls={`faq-answer-${idx}`}
                   style={{ color: '#0a0a0a' }}
                 >
-                  <span style={{ fontWeight: 600 }}>{faq.q}</span>
+                  <span className="grass-text">{faq.q}</span>
                   <span className={`faq-toggle-icon ${isOpen ? 'open' : ''}`} aria-hidden="true" />
                 </button>
 

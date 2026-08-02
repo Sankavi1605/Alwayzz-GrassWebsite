@@ -179,6 +179,7 @@ body::before {
   }
 
   /* Hero words are ~100px, so they carry the coarse, long-bladed fringe. */
+  .hero-giant-title.grass-text,
   .hero-giant-title .grass-text {
     filter:
       url(#turf-lg)
@@ -186,16 +187,51 @@ body::before {
       drop-shadow(0 6px 10px rgba(0, 0, 0, 0.3));
   }
 
+  /* Small headings (13-24px). The md fringe is sized for 50px type and would
+     eat letters this small. */
+  .footer-column-title.grass-text,
+  .faq-question .grass-text,
+  .capability-title.grass-text,
+  .logo-text.grass-text {
+    filter:
+      url(#turf-xs)
+      drop-shadow(0 1px 0 rgba(30, 66, 22, 0.75));
+  }
+
+  /* Small grass headings that sit on LIGHT backgrounds get darkened.
+     The lush rgb(108,161,69) is tuned to look like the reference render at
+     display sizes, but against a near-white panel it measures ~2.6:1 — under
+     the 4.5:1 needed at 13-18px. brightness(0.68) takes it to ~5:1 while
+     keeping the blades; the white rim separates it from the panel. */
+  .faq-question .grass-text,
+  .footer-column-title.grass-text,
+  .logo-text.grass-text {
+    filter:
+      url(#turf-xs)
+      brightness(0.68)
+      saturate(1.15)
+      drop-shadow(0 1px 0 rgba(255, 255, 255, 0.55));
+  }
+
   /* Over the dark forest / video / dark card sections the green needs a
-     light halo to stay legible. */
-  .capabilities-wrapper .grass-text,
-  .faq-video-section-wrapper .grass-text,
+     light halo to stay legible. Scoped to the big titles: the FAQ questions
+     sit on light glass panels, where a white halo would look wrong. */
+  .capabilities-wrapper .section-title1.grass-text,
+  .faq-video-section-wrapper .section-title.grass-text,
   .glass-card-under .grass-text {
     filter:
       url(#turf-md)
       drop-shadow(0 2px 0 rgba(30, 66, 22, 0.95))
       drop-shadow(0 0 7px rgba(255, 255, 255, 0.4))
       drop-shadow(0 3px 5px rgba(0, 0, 0, 0.55));
+  }
+
+  /* Capability titles sit on the dark forest too, but at 20-24px */
+  .capabilities-wrapper .capability-title.grass-text {
+    filter:
+      url(#turf-xs)
+      drop-shadow(0 1px 0 rgba(30, 66, 22, 0.9))
+      drop-shadow(0 0 5px rgba(255, 255, 255, 0.35));
   }
 }
 
@@ -2063,10 +2099,16 @@ body::before {
    cheaper to reason about than escalating specificity on each one.
    ========================================================================== */
 
+.hero-giant-title.grass-text,
 .hero-giant-title .grass-text,
 .section-title.grass-text,
 .section-title1.grass-text,
-.final-cta-title.grass-text {
+.final-cta-title.grass-text,
+.capability-title.grass-text,
+.footer-column-title.grass-text,
+.drawer-link.grass-text,
+.logo-text.grass-text,
+.faq-question .grass-text {
   font-family: var(--font-grass);
   font-variation-settings: normal;
   font-weight: 800;
@@ -2298,6 +2340,7 @@ body::before {
   /* Morphology radius and displacement scale are absolute px, so the
      desktop fringe would chew straight through 23px type. */
   .grass-text,
+  .hero-giant-title.grass-text,
   .hero-giant-title .grass-text {
     filter:
       url(#turf-sm)
@@ -2305,14 +2348,34 @@ body::before {
       drop-shadow(0 2px 4px rgba(0, 0, 0, 0.32));
   }
 
-  .capabilities-wrapper .grass-text,
-  .faq-video-section-wrapper .grass-text,
+  /* Same scoping as the desktop rules: only the big titles over dark art get
+     the light halo. Left broad, this also caught the FAQ questions, which sit
+     on light glass panels and were losing the darkening they need. */
+  .capabilities-wrapper .section-title1.grass-text,
+  .faq-video-section-wrapper .section-title.grass-text,
   .glass-card-under .grass-text {
     filter:
       url(#turf-sm)
       drop-shadow(0 1px 0 rgba(30, 66, 22, 0.9))
       drop-shadow(0 0 6px rgba(255, 255, 255, 0.4))
       drop-shadow(0 2px 4px rgba(0, 0, 0, 0.55));
+  }
+
+  .capabilities-wrapper .capability-title.grass-text {
+    filter:
+      url(#turf-xs)
+      drop-shadow(0 1px 0 rgba(30, 66, 22, 0.9))
+      drop-shadow(0 0 5px rgba(255, 255, 255, 0.35));
+  }
+
+  .faq-question .grass-text,
+  .footer-column-title.grass-text,
+  .logo-text.grass-text {
+    filter:
+      url(#turf-xs)
+      brightness(0.68)
+      saturate(1.15)
+      drop-shadow(0 1px 0 rgba(255, 255, 255, 0.55));
   }
 
   .section-subtitle {
