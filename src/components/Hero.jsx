@@ -15,7 +15,16 @@ export default function Hero({ onBookClick, onViewPlansClick }) {
           </h1>
 
           {/* Interactive 3D Moss Globe Artwork (Positioned to overlap & partially hide heading letters) */}
-          <div data-reveal style={{ '--reveal-delay': '160ms', width: '100%' }}>
+          {/* position + z-index here are REQUIRED, not decoration. This
+              wrapper carries a transform for the reveal animation, which makes
+              it a stacking context — that traps the globe's own z-index:3
+              inside it and leaves the wrapper itself at auto (0), so the
+              titles painted OVER the artwork. Lifting the wrapper to 3 puts
+              the wording back behind the images, as designed. */}
+          <div
+            data-reveal
+            style={{ '--reveal-delay': '160ms', width: '100%', position: 'relative', zIndex: 3 }}
+          >
             <HeroBeforeAfter />
           </div>
 

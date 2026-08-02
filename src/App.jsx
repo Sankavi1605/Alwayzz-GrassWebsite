@@ -75,10 +75,14 @@ export default function App() {
       <svg aria-hidden="true" focusable="false" width="0" height="0" className="svg-filter-defs">
         <defs>
           {[
-            { id: 'turf-lg', freq: 0.3, dilate: 2.2, scale: 13, goo: 1.0 },
-            { id: 'turf-md', freq: 0.34, dilate: 1.1, scale: 6, goo: 0.75 },
-            { id: 'turf-sm', freq: 0.4, dilate: 0.6, scale: 3, goo: 0.35 },
-            { id: 'turf-xs', freq: 0.5, dilate: 0.3, scale: 1.5, goo: 0.22 },
+            /* Higher goo rounds the silhouette: the blur+threshold pass
+               swallows sharp corners, so letters read as rounded turf clumps
+               rather than cut shapes. Fringe scale eased back a little to
+               keep the edge clumpy instead of spiky. */
+            { id: 'turf-lg', freq: 0.28, dilate: 2.6, scale: 11, goo: 2.0 },
+            { id: 'turf-md', freq: 0.32, dilate: 1.3, scale: 5, goo: 1.1 },
+            { id: 'turf-sm', freq: 0.38, dilate: 0.7, scale: 2.6, goo: 0.55 },
+            { id: 'turf-xs', freq: 0.48, dilate: 0.35, scale: 1.3, goo: 0.32 },
           ].map(({ id, freq, dilate, scale, goo }) => (
             <filter
               key={id}

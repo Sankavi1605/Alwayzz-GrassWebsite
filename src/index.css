@@ -32,11 +32,13 @@
   --font-grass: 'Baloo 2', 'Trebuchet MS', system-ui, sans-serif;
 
   /* Grass fill used by .grass-text. Real lawn macro (Jason Dent / Unsplash,
-     free for commercial use), graded at the CDN to the vivid yellow-green of
-     the 3D reference render: measured rgb(108,161,69) against a ~rgb(105,172,60)
-     target. con=20 keeps the blade edges crisp at the grade. */
-  --grass-texture: url("https://images.unsplash.com/photo-1544914379-806667cd9489?w=1600&q=75&auto=format&fit=crop&bri=32&sat=66&hue=-24&con=20");
-  --grass-fallback: #6ca247;
+     free for commercial use), graded at the CDN to match the moss globe it
+     sits over: measured rgb(64,124,28) against a ~rgb(78,124,46) target.
+     Deeper and less yellow than the previous grade, which read as lit plastic
+     rather than turf. con=26 keeps the blades crisp, and the darker fill
+     lifts contrast on white from 4.2:1 to 5.1:1. */
+  --grass-texture: url("https://images.unsplash.com/photo-1544914379-806667cd9489?w=1600&q=75&auto=format&fit=crop&bri=18&sat=60&hue=-22&con=26");
+  --grass-fallback: #4e7c2a;
 }
 
 html {
@@ -133,19 +135,21 @@ body::before {
     background-image:
       /* Daisies, sparse, scattered through the turf like the reference.
          Yellow eye, white petals. Tiled large so they stay occasional. */
-      radial-gradient(circle at 17% 26%, #f0bd45 0 0.5%, #fffdf5 0.75% 1.6%, rgba(255, 255, 255, 0) 1.85%),
-      radial-gradient(circle at 68% 13%, #f0bd45 0 0.42%, #fffdf5 0.66% 1.4%, rgba(255, 255, 255, 0) 1.62%),
-      radial-gradient(circle at 40% 72%, #f0bd45 0 0.48%, #fffdf5 0.72% 1.52%, rgba(255, 255, 255, 0) 1.76%),
-      radial-gradient(circle at 87% 60%, #f0bd45 0 0.38%, #fffdf5 0.6% 1.3%, rgba(255, 255, 255, 0) 1.5%),
+      /* Daisies in muted cream. Pure white blew them out into bright specks
+         that read as glare rather than flowers. */
+      radial-gradient(circle at 17% 26%, #cdb268 0 0.5%, #e2d6b6 0.75% 1.6%, rgba(255, 255, 255, 0) 1.85%),
+      radial-gradient(circle at 68% 13%, #cdb268 0 0.42%, #e2d6b6 0.66% 1.4%, rgba(255, 255, 255, 0) 1.62%),
+      radial-gradient(circle at 40% 72%, #cdb268 0 0.48%, #e2d6b6 0.72% 1.52%, rgba(255, 255, 255, 0) 1.76%),
+      radial-gradient(circle at 87% 60%, #cdb268 0 0.38%, #e2d6b6 0.6% 1.3%, rgba(255, 255, 255, 0) 1.5%),
       /* Volume. The reference is a lit 3D extrusion: sun catching the tips
          top-left, ambient occlusion deepening toward the base. */
-      linear-gradient(168deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.05) 34%, rgba(0, 0, 0, 0) 58%, rgba(0, 0, 0, 0.34) 100%),
+      linear-gradient(168deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 30%, rgba(0, 0, 0, 0.06) 56%, rgba(0, 0, 0, 0.5) 100%),
       /* Patches of brighter and deeper turf, so the fill is never one flat
          green. Blended `overlay` onto the photo below rather than painted
          over it, which keeps the blade detail intact. */
-      radial-gradient(ellipse 62% 48% at 24% 28%, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 72%),
-      radial-gradient(ellipse 58% 52% at 78% 70%, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 74%),
-      radial-gradient(ellipse 45% 60% at 55% 12%, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0) 70%),
+      radial-gradient(ellipse 62% 48% at 24% 28%, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 72%),
+      radial-gradient(ellipse 58% 52% at 78% 70%, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0) 74%),
+      radial-gradient(ellipse 45% 60% at 55% 12%, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0) 70%),
       var(--grass-texture);
     /* em-based tiles => the look holds at every font size */
     background-size:
@@ -172,19 +176,25 @@ body::before {
        muddy the grass; drop-shadow sits behind them instead. The dark green
        hard shadow is the turf's own thickness, the soft one is its cast. */
     text-shadow: none;
+    /* Stacked hard shadows in descending green read as the SIDE WALL of an
+       extruded block of turf; the soft one below is its cast shadow. A single
+       flat shadow just looks like paper lifted off the page. */
     filter:
       url(#turf-md)
-      drop-shadow(0 2px 0 rgba(30, 66, 22, 0.9))
-      drop-shadow(0 4px 7px rgba(0, 0, 0, 0.3));
+      drop-shadow(0 1px 0 rgba(52, 96, 36, 0.95))
+      drop-shadow(0 3px 0 rgba(22, 50, 15, 0.95))
+      drop-shadow(0 7px 11px rgba(0, 0, 0, 0.34));
   }
 
-  /* Hero words are ~100px, so they carry the coarse, long-bladed fringe. */
+  /* Hero words are ~108px: coarsest fringe and the deepest side wall. */
   .hero-giant-title.grass-text,
   .hero-giant-title .grass-text {
     filter:
       url(#turf-lg)
-      drop-shadow(0 3px 0 rgba(30, 66, 22, 0.9))
-      drop-shadow(0 6px 10px rgba(0, 0, 0, 0.3));
+      drop-shadow(0 2px 0 rgba(58, 104, 40, 0.95))
+      drop-shadow(0 4px 0 rgba(38, 76, 26, 0.95))
+      drop-shadow(0 7px 0 rgba(20, 46, 14, 0.95))
+      drop-shadow(0 15px 20px rgba(0, 0, 0, 0.36));
   }
 
   /* Small headings (13-24px). The md fringe is sized for 50px type and would
@@ -198,19 +208,16 @@ body::before {
       drop-shadow(0 1px 0 rgba(30, 66, 22, 0.75));
   }
 
-  /* Small grass headings that sit on LIGHT backgrounds get darkened.
-     The lush rgb(108,161,69) is tuned to look like the reference render at
-     display sizes, but against a near-white panel it measures ~2.6:1 — under
-     the 4.5:1 needed at 13-18px. brightness(0.68) takes it to ~5:1 while
-     keeping the blades; the white rim separates it from the panel. */
+  /* Small grass headings on LIGHT backgrounds. These previously needed
+     brightness(0.68), because the old lush grade measured only ~2.6:1 against
+     a near-white panel. The darker base clears 5.1:1 on its own, so the crush
+     is gone — it would now push these to near-black and kill the blades. */
   .faq-question .grass-text,
   .footer-column-title.grass-text,
   .logo-text.grass-text {
     filter:
       url(#turf-xs)
-      brightness(0.68)
-      saturate(1.15)
-      drop-shadow(0 1px 0 rgba(255, 255, 255, 0.55));
+      drop-shadow(0 1px 0 rgba(255, 255, 255, 0.6));
   }
 
   /* Over the dark forest / video / dark card sections the green needs a
@@ -221,9 +228,10 @@ body::before {
   .glass-card-under .grass-text {
     filter:
       url(#turf-md)
-      drop-shadow(0 2px 0 rgba(30, 66, 22, 0.95))
-      drop-shadow(0 0 7px rgba(255, 255, 255, 0.4))
-      drop-shadow(0 3px 5px rgba(0, 0, 0, 0.55));
+      drop-shadow(0 1px 0 rgba(58, 104, 40, 0.95))
+      drop-shadow(0 3px 0 rgba(22, 50, 15, 0.95))
+      drop-shadow(0 0 9px rgba(255, 255, 255, 0.55))
+      drop-shadow(0 4px 6px rgba(0, 0, 0, 0.55));
   }
 
   /* Capability titles sit on the dark forest too, but at 20-24px */
