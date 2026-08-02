@@ -10,8 +10,8 @@ export default function Hero({ onBookClick, onViewPlansClick }) {
       <div className="hero-content">
         {/* Giant Layered Background Title (Letters partially hidden by 3D artwork) */}
         <div className="hero-layered-title-wrapper">
-          <h1 className="hero-giant-title top-title grass-text" data-reveal>
-            PREMIUM creative
+          <h1 className="hero-giant-title top-title" data-reveal>
+            PREMIUM <span className="grass-text">creative</span>
           </h1>
 
           {/* Interactive 3D Moss Globe Artwork (Positioned to overlap & partially hide heading letters) */}
@@ -28,8 +28,8 @@ export default function Hero({ onBookClick, onViewPlansClick }) {
             <HeroBeforeAfter />
           </div>
 
-          <h1 className="hero-giant-title bottom-title grass-text" data-reveal style={{ '--reveal-delay': '320ms' }}>
-            alwayzz<sup>®</sup> ON DEMAND
+          <h1 className="hero-giant-title bottom-title" data-reveal style={{ '--reveal-delay': '320ms' }}>
+            <span className="grass-text">alwayzz</span><sup>®</sup> ON DEMAND
           </h1>
         </div>
 

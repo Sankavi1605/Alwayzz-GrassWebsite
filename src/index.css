@@ -186,8 +186,7 @@ body::before {
       drop-shadow(0 7px 11px rgba(0, 0, 0, 0.34));
   }
 
-  /* Hero words are ~108px: coarsest fringe and the deepest side wall. */
-  .hero-giant-title.grass-text,
+  /* The two hero accent words are ~108px: coarsest fringe, deepest wall. */
   .hero-giant-title .grass-text {
     filter:
       url(#turf-lg)
@@ -197,28 +196,6 @@ body::before {
       drop-shadow(0 15px 20px rgba(0, 0, 0, 0.36));
   }
 
-  /* Small headings (13-24px). The md fringe is sized for 50px type and would
-     eat letters this small. */
-  .footer-column-title.grass-text,
-  .faq-question .grass-text,
-  .capability-title.grass-text,
-  .logo-text.grass-text {
-    filter:
-      url(#turf-xs)
-      drop-shadow(0 1px 0 rgba(30, 66, 22, 0.75));
-  }
-
-  /* Small grass headings on LIGHT backgrounds. These previously needed
-     brightness(0.68), because the old lush grade measured only ~2.6:1 against
-     a near-white panel. The darker base clears 5.1:1 on its own, so the crush
-     is gone — it would now push these to near-black and kill the blades. */
-  .faq-question .grass-text,
-  .footer-column-title.grass-text,
-  .logo-text.grass-text {
-    filter:
-      url(#turf-xs)
-      drop-shadow(0 1px 0 rgba(255, 255, 255, 0.6));
-  }
 
   /* Over the dark forest / video / dark card sections the green needs a
      light halo to stay legible. Scoped to the big titles: the FAQ questions
@@ -234,13 +211,6 @@ body::before {
       drop-shadow(0 4px 6px rgba(0, 0, 0, 0.55));
   }
 
-  /* Capability titles sit on the dark forest too, but at 20-24px */
-  .capabilities-wrapper .capability-title.grass-text {
-    filter:
-      url(#turf-xs)
-      drop-shadow(0 1px 0 rgba(30, 66, 22, 0.9))
-      drop-shadow(0 0 5px rgba(255, 255, 255, 0.35));
-  }
 }
 
 .svg-filter-defs {
@@ -590,9 +560,10 @@ body::before {
 
 .hero-giant-title {
   /* Sized off the widest line, 'alwayzz(R) ON DEMAND', which sets at
-     10.34px of width per 1px of font-size in Baloo 2 800. Keeping it on ONE
-     line matters: when it wraps, the 3D globe swallows a whole line. */
-  font-size: clamp(56px, 8.6vw, 108px);
+     11.02px of width per 1px of font-size, now that only the accent word is
+     Baloo 2 and the rest is Fraunces. Keeping it on ONE line matters: when it
+     wraps, the 3D globe swallows a whole line. */
+  font-size: clamp(56px, 8.2vw, 102px);
   font-weight: 800;
   letter-spacing: -0.025em;
   line-height: 0.95;
@@ -2107,16 +2078,10 @@ body::before {
    cheaper to reason about than escalating specificity on each one.
    ========================================================================== */
 
-.hero-giant-title.grass-text,
 .hero-giant-title .grass-text,
 .section-title.grass-text,
 .section-title1.grass-text,
-.final-cta-title.grass-text,
-.capability-title.grass-text,
-.footer-column-title.grass-text,
-.drawer-link.grass-text,
-.logo-text.grass-text,
-.faq-question .grass-text {
+.final-cta-title.grass-text {
   font-family: var(--font-grass);
   font-variation-settings: normal;
   font-weight: 800;
@@ -2150,7 +2115,7 @@ body::before {
   }
 
   .hero-giant-title {
-    font-size: clamp(46px, 8.2vw, 96px);
+    font-size: clamp(46px, 7.8vw, 96px);
   }
 
   .hero-giant-title.top-title {
@@ -2270,7 +2235,7 @@ body::before {
   /* Sized so the longest line ("alwayzz® ON DEMAND") stays on ONE line in
      Fraunces — if it wraps, the 3D globe swallows an entire line. */
   .hero-giant-title {
-    font-size: clamp(18px, 7.9vw, 56px);
+    font-size: clamp(18px, 7.4vw, 56px);
   }
 
   /* Shallower overlap on phones: the globe should graze the letter edges the
@@ -2348,7 +2313,6 @@ body::before {
   /* Morphology radius and displacement scale are absolute px, so the
      desktop fringe would chew straight through 23px type. */
   .grass-text,
-  .hero-giant-title.grass-text,
   .hero-giant-title .grass-text {
     filter:
       url(#turf-sm)
@@ -2369,22 +2333,6 @@ body::before {
       drop-shadow(0 2px 4px rgba(0, 0, 0, 0.55));
   }
 
-  .capabilities-wrapper .capability-title.grass-text {
-    filter:
-      url(#turf-xs)
-      drop-shadow(0 1px 0 rgba(30, 66, 22, 0.9))
-      drop-shadow(0 0 5px rgba(255, 255, 255, 0.35));
-  }
-
-  .faq-question .grass-text,
-  .footer-column-title.grass-text,
-  .logo-text.grass-text {
-    filter:
-      url(#turf-xs)
-      brightness(0.68)
-      saturate(1.15)
-      drop-shadow(0 1px 0 rgba(255, 255, 255, 0.55));
-  }
 
   .section-subtitle {
     font-size: 16px;

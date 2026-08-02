@@ -39,7 +39,7 @@ export default function Navbar({ onBookClick }) {
       <nav className="navbar">
         <div className="nav-container">
           {/* Logo */}
-          <a href="#" className="logo-text grass-text">
+          <a href="#" className="logo-text">
             Alwayzz<span className="logo-reg">®</span>
           </a>
 
@@ -58,7 +58,7 @@ export default function Navbar({ onBookClick }) {
       {/* Full-screen Drawer Overlay */}
       <div className={`nav-drawer ${drawerOpen ? 'open' : ''}`}>
         <div className="drawer-header">
-          <a href="#" className="logo-text grass-text" onClick={() => setDrawerOpen(false)}>
+          <a href="#" className="logo-text" onClick={() => setDrawerOpen(false)}>
             Alwayzz<span className="logo-reg">®</span>
           </a>
           <button 
@@ -76,7 +76,7 @@ export default function Navbar({ onBookClick }) {
             <a
               key={link.label}
               href={link.href}
-              className="drawer-link grass-text"
+              className="drawer-link"
               onClick={(e) => handleLinkClick(e, link.href)}
             >
               {link.label}

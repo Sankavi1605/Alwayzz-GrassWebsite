@@ -82,7 +82,6 @@ export default function App() {
             { id: 'turf-lg', freq: 0.28, dilate: 2.6, scale: 11, goo: 2.0 },
             { id: 'turf-md', freq: 0.32, dilate: 1.3, scale: 5, goo: 1.1 },
             { id: 'turf-sm', freq: 0.38, dilate: 0.7, scale: 2.6, goo: 0.55 },
-            { id: 'turf-xs', freq: 0.48, dilate: 0.35, scale: 1.3, goo: 0.32 },
           ].map(({ id, freq, dilate, scale, goo }) => (
             <filter
               key={id}
