@@ -41,29 +41,29 @@ export default function Pricing({ onBookClick }) {
         {/* Standard Plan */}
         <div className="pricing-card-img-bg">
           <div className="board-card-inner">
-            <h3 className="plan-name wood-text" style={{ fontSize: '24px', fontWeight: 800 }}>Standard</h3>
-            <p className="plan-desc" style={{ color: 'rgba(246, 231, 202, 0.92)', fontSize: '12.5px', marginBottom: '10px', textShadow: '0 1px 3px rgba(20,10,3,0.95)' }}>
+            <h3 className="plan-name wood-script engraved-name">Standard</h3>
+            <p className="plan-desc engraved-body" style={{ lineHeight: 1.5, fontSize: '13px', marginBottom: '12px', fontWeight: 700 }}>
               For teams with a steady trickle of work.
             </p>
             
-            <div className="plan-price-wrapper" style={{ marginBottom: '12px' }}>
-              <span className="plan-price wood-text" style={{ fontSize: '38px', fontWeight: 800 }}>
+            <div className="plan-price-wrapper" style={{ marginBottom: '14px' }}>
+              <span className="plan-price wood-script engraved-price">
                 ${isQuarterly ? '4,240' : '4,990'}
               </span>
-              <span className="plan-period" style={{ color: '#e8c68d', fontSize: '13px', fontWeight: 600, textShadow: '0 1px 3px rgba(20,10,3,0.95)' }}>/ mo</span>
+              <span className="plan-period engraved-body" style={{ fontSize: '13px', fontWeight: 700 }}>/ mo</span>
             </div>
 
-            <ul className="plan-features-list" style={{ gap: '6px', marginBottom: '16px', listStyle: 'none', padding: 0 }}>
-              <li className="plan-feature-item" style={{ color: '#f2e2c2', fontSize: '12px', fontWeight: 600, textShadow: '0 1px 2px rgba(20,10,3,0.95)', textAlign: 'center' }}>
+            <ul className="plan-features-list" style={{ gap: '8px', marginBottom: '16px', listStyle: 'none', padding: 0 }}>
+              <li className="plan-feature-item engraved-feature" style={{ fontSize: '13px', fontWeight: 800, textAlign: 'center', lineHeight: 1.35 }}>
                 One request in flight
               </li>
-              <li className="plan-feature-item" style={{ color: '#f2e2c2', fontSize: '12px', fontWeight: 600, textShadow: '0 1px 2px rgba(20,10,3,0.95)', textAlign: 'center' }}>
+              <li className="plan-feature-item engraved-feature" style={{ fontSize: '13px', fontWeight: 800, textAlign: 'center', lineHeight: 1.35 }}>
                 Most things back within 48 hours
               </li>
-              <li className="plan-feature-item" style={{ color: '#f2e2c2', fontSize: '12px', fontWeight: 600, textShadow: '0 1px 2px rgba(20,10,3,0.95)', textAlign: 'center' }}>
+              <li className="plan-feature-item engraved-feature" style={{ fontSize: '13px', fontWeight: 800, textAlign: 'center', lineHeight: 1.35 }}>
                 Revisions until you are happy
               </li>
-              <li className="plan-feature-item" style={{ color: '#f2e2c2', fontSize: '12px', fontWeight: 600, textShadow: '0 1px 2px rgba(20,10,3,0.95)', textAlign: 'center' }}>
+              <li className="plan-feature-item engraved-feature" style={{ fontSize: '13px', fontWeight: 800, textAlign: 'center', lineHeight: 1.35 }}>
                 Pause or leave whenever
               </li>
             </ul>
@@ -80,29 +80,29 @@ export default function Pricing({ onBookClick }) {
             Most Popular
           </span>
           <div className="board-card-inner">
-            <h3 className="plan-name wood-text" style={{ fontSize: '24px', fontWeight: 800 }}>Double Power</h3>
-            <p className="plan-desc" style={{ color: 'rgba(246, 231, 202, 0.92)', fontSize: '12.5px', marginBottom: '10px', textShadow: '0 1px 3px rgba(20,10,3,0.95)' }}>
+            <h3 className="plan-name wood-script engraved-name">Double Power</h3>
+            <p className="plan-desc engraved-body" style={{ lineHeight: 1.5, fontSize: '13px', marginBottom: '12px', fontWeight: 700 }}>
               For teams shipping faster than one queue allows.
             </p>
             
-            <div className="plan-price-wrapper" style={{ marginBottom: '12px' }}>
-              <span className="plan-price wood-text" style={{ fontSize: '38px', fontWeight: 800 }}>
+            <div className="plan-price-wrapper" style={{ marginBottom: '14px' }}>
+              <span className="plan-price wood-script engraved-price">
                 ${isQuarterly ? '7,640' : '8,990'}
               </span>
-              <span className="plan-period" style={{ color: '#e8c68d', fontSize: '13px', fontWeight: 600, textShadow: '0 1px 3px rgba(20,10,3,0.95)' }}>/ mo</span>
+              <span className="plan-period engraved-body" style={{ fontSize: '13px', fontWeight: 700 }}>/ mo</span>
             </div>
 
-            <ul className="plan-features-list" style={{ gap: '6px', marginBottom: '16px', listStyle: 'none', padding: 0 }}>
-              <li className="plan-feature-item" style={{ color: '#f2e2c2', fontSize: '12px', fontWeight: 600, textShadow: '0 1px 2px rgba(20,10,3,0.95)', textAlign: 'center' }}>
+            <ul className="plan-features-list" style={{ gap: '8px', marginBottom: '16px', listStyle: 'none', padding: 0 }}>
+              <li className="plan-feature-item engraved-feature" style={{ fontSize: '13px', fontWeight: 800, textAlign: 'center', lineHeight: 1.35 }}>
                 Two requests in flight
               </li>
-              <li className="plan-feature-item" style={{ color: '#f2e2c2', fontSize: '12px', fontWeight: 600, textShadow: '0 1px 2px rgba(20,10,3,0.95)', textAlign: 'center' }}>
+              <li className="plan-feature-item engraved-feature" style={{ fontSize: '13px', fontWeight: 800, textAlign: 'center', lineHeight: 1.35 }}>
                 First in the queue, 24 to 48 hours
               </li>
-              <li className="plan-feature-item" style={{ color: '#f2e2c2', fontSize: '12px', fontWeight: 600, textShadow: '0 1px 2px rgba(20,10,3,0.95)', textAlign: 'center' }}>
+              <li className="plan-feature-item engraved-feature" style={{ fontSize: '13px', fontWeight: 800, textAlign: 'center', lineHeight: 1.35 }}>
                 A creative director who knows your brand
               </li>
-              <li className="plan-feature-item" style={{ color: '#f2e2c2', fontSize: '12px', fontWeight: 600, textShadow: '0 1px 2px rgba(20,10,3,0.95)', textAlign: 'center' }}>
+              <li className="plan-feature-item engraved-feature" style={{ fontSize: '13px', fontWeight: 800, textAlign: 'center', lineHeight: 1.35 }}>
                 Your own Slack channel
               </li>
             </ul>
@@ -116,27 +116,27 @@ export default function Pricing({ onBookClick }) {
         {/* Custom Scope / Enterprise */}
         <div className="pricing-card-img-bg">
           <div className="board-card-inner">
-            <h3 className="plan-name wood-text" style={{ fontSize: '24px', fontWeight: 800 }}>Custom Scope</h3>
-            <p className="plan-desc" style={{ color: 'rgba(246, 231, 202, 0.92)', fontSize: '12.5px', marginBottom: '10px', textShadow: '0 1px 3px rgba(20,10,3,0.95)' }}>
+            <h3 className="plan-name wood-script engraved-name">Custom Scope</h3>
+            <p className="plan-desc engraved-body" style={{ lineHeight: 1.5, fontSize: '13px', marginBottom: '12px', fontWeight: 700 }}>
               For a launch that needs everyone at once.
             </p>
             
-            <div className="plan-price-wrapper" style={{ marginBottom: '12px' }}>
-              <span className="plan-price wood-text" style={{ fontSize: '38px', fontWeight: 800 }}>Custom</span>
-              <span className="plan-period" style={{ color: '#e8c68d', fontSize: '13px', fontWeight: 600, textShadow: '0 1px 3px rgba(20,10,3,0.95)' }}>/ project</span>
+            <div className="plan-price-wrapper" style={{ marginBottom: '14px' }}>
+              <span className="plan-price wood-script engraved-price">Custom</span>
+              <span className="plan-period engraved-body" style={{ fontSize: '13px', fontWeight: 700 }}>/ project</span>
             </div>
 
-            <ul className="plan-features-list" style={{ gap: '6px', marginBottom: '16px', listStyle: 'none', padding: 0 }}>
-              <li className="plan-feature-item" style={{ color: '#f2e2c2', fontSize: '12px', fontWeight: 600, textShadow: '0 1px 2px rgba(20,10,3,0.95)', textAlign: 'center' }}>
+            <ul className="plan-features-list" style={{ gap: '8px', marginBottom: '16px', listStyle: 'none', padding: 0 }}>
+              <li className="plan-feature-item engraved-feature" style={{ fontSize: '13px', fontWeight: 800, textAlign: 'center', lineHeight: 1.35 }}>
                 A full pod, yours for the sprint
               </li>
-              <li className="plan-feature-item" style={{ color: '#f2e2c2', fontSize: '12px', fontWeight: 600, textShadow: '0 1px 2px rgba(20,10,3,0.95)', textAlign: 'center' }}>
+              <li className="plan-feature-item engraved-feature" style={{ fontSize: '13px', fontWeight: 800, textAlign: 'center', lineHeight: 1.35 }}>
                 Your launch date, in writing
               </li>
-              <li className="plan-feature-item" style={{ color: '#f2e2c2', fontSize: '12.5px', fontWeight: 600, textShadow: '0 1px 2px rgba(20,10,3,0.95)', textAlign: 'center' }}>
+              <li className="plan-feature-item engraved-feature" style={{ fontSize: '13px', fontWeight: 800, textAlign: 'center', lineHeight: 1.35 }}>
                 Brand and site, end to end
               </li>
-              <li className="plan-feature-item" style={{ color: '#f2e2c2', fontSize: '12px', fontWeight: 600, textShadow: '0 1px 2px rgba(20,10,3,0.95)', textAlign: 'center' }}>
+              <li className="plan-feature-item engraved-feature" style={{ fontSize: '13px', fontWeight: 800, textAlign: 'center', lineHeight: 1.35 }}>
                 NDAs and procurement, handled
               </li>
             </ul>

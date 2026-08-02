@@ -1868,59 +1868,63 @@ body::before {
 }
 
 /* ==========================================================================
-   GILDED WOOD TEXT (pricing plaques)
+   ENGRAVED WOOD TEXT (pricing plaques)
 
-   The plan names and prices should read as CARVED INTO the plank and gilded,
-   not printed flat on top of it. Three parts:
+   The plaque text is CUT INTO the plank, not gilded on top of it. What sells
+   it is the shadow PAIR and its direction:
 
-   1. A gold ramp down the glyph — pale highlight at the top where the light
-      lands, deepening to dark bronze in the shadow at the bottom.
-   2. Fine grain streaks blended over the ramp, so the gold carries the same
-      grain that runs through the board behind it.
-   3. A lit rim ABOVE each glyph and a hard dark edge BELOW, then a soft cast
-      shadow onto the wood. That order is what reads as "raised and lit from
-      above"; swapping the two reads as debossed instead.
+     dark, up-and-left   -> the cut wall standing in shade
+     cream, down-and-right -> the lower lip catching the light
 
-   drop-shadow rather than text-shadow throughout: the glyph fill is
-   transparent, so a text-shadow would show straight through the letters and
-   muddy the gold.
+   Reverse that pair and the same text reads as raised instead of carved. The
+   warm cream (#ffe7bd) is what gives the letters their golden glint — the
+   glyph itself is dark brown, not gold.
+
+   Real text-shadow here, not background-clip: the fill stays opaque, so
+   shadows sit behind the letters where they belong.
    ========================================================================== */
 
-.wood-text {
-  font-family: var(--font-display);
-  font-variation-settings: var(--display-axes);
-  font-style: italic;
-  color: #e0b264;
+.wood-script {
+  font-family: 'Kaushan Script', cursive;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0.01em;
 }
 
-@supports ((-webkit-background-clip: text) or (background-clip: text)) {
-  .wood-text {
-    background-color: #c8933f;
-    background-image:
-      repeating-linear-gradient(93deg, rgba(255, 246, 224, 0.16) 0 1px, rgba(60, 30, 8, 0.14) 1px 3px),
-      /* Ramp floor stays clearly lighter than the plank (~rgb(105,70,42)) —
-         a darker bronze at the base sinks the glyph into the wood. The dark
-         separation comes from the drop-shadow edge, not from the fill. */
-      linear-gradient(176deg,
-        #fff3d0 0%,
-        #f6dd9e 16%,
-        #e6bd72 40%,
-        #d09c4c 64%,
-        #b8823a 85%,
-        #a06d2b 100%);
-    background-size: 100% 100%, 100% 100%;
-    background-repeat: repeat, no-repeat;
-    background-blend-mode: overlay, normal;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-    text-shadow: none;
-    filter:
-      drop-shadow(0 -1px 0 rgba(255, 240, 202, 0.5))
-      drop-shadow(0 2px 1px rgba(38, 18, 5, 0.95))
-      drop-shadow(0 4px 7px rgba(20, 10, 3, 0.7));
-  }
+.engraved-name {
+  font-size: 34px;
+  line-height: 1.15;
+  margin-bottom: 10px;
+  color: #40230d;
+  text-shadow:
+    -1px -1px 1px rgba(0, 0, 0, 0.85),
+    -2px -2px 3px rgba(0, 0, 0, 0.45),
+    1px 1.5px 0 rgba(255, 231, 189, 0.95),
+    2px 3px 4px rgba(255, 231, 189, 0.4);
+}
+
+.engraved-price {
+  font-size: 44px;
+  color: #351906;
+  text-shadow:
+    -1.5px -1.5px 1px rgba(0, 0, 0, 0.9),
+    -3px -3px 4px rgba(0, 0, 0, 0.5),
+    1.5px 2px 0 rgba(255, 233, 193, 1),
+    3px 4px 6px rgba(255, 233, 193, 0.45);
+}
+
+.engraved-body {
+  color: #33190a;
+  text-shadow:
+    -1px -1px 1px rgba(0, 0, 0, 0.7),
+    1px 1px 0 rgba(255, 231, 189, 0.9);
+}
+
+.engraved-feature {
+  color: #2b1407;
+  text-shadow:
+    -1px -1px 1px rgba(0, 0, 0, 0.8),
+    1px 1.5px 0 rgba(255, 231, 189, 0.95);
 }
 
 /* ==========================================================================
