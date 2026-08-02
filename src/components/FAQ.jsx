@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import useReveal from '../hooks/useReveal';
-import { Plus, Minus } from 'lucide-react';
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(0);
@@ -73,17 +72,32 @@ export default function FAQ() {
               >
                 <button
                   className="faq-question"
+                  id={`faq-question-${idx}`}
                   onClick={() => setOpenIndex(isOpen ? -1 : idx)}
+                  aria-expanded={isOpen}
+                  aria-controls={`faq-answer-${idx}`}
                   style={{ color: '#0a0a0a' }}
                 >
                   <span style={{ fontWeight: 600 }}>{faq.q}</span>
-                  {isOpen ? <Minus size={20} style={{ color: '#0a0a0a' }} /> : <Plus size={20} style={{ color: '#0a0a0a' }} />}
+                  <span className={`faq-toggle-icon ${isOpen ? 'open' : ''}`} aria-hidden="true" />
                 </button>
-                {isOpen && (
-                  <div className="faq-answer" style={{ color: '#222222', fontSize: '15px', fontWeight: 500, lineHeight: 1.6 }}>
-                    {faq.a}
+
+                {/* Always rendered so it can animate. Height is driven by the
+                    grid-template-rows 0fr -> 1fr trick, which transitions to
+                    the content's natural height without measuring it. */}
+                <div
+                  id={`faq-answer-${idx}`}
+                  className={`faq-answer-wrap ${isOpen ? 'open' : ''}`}
+                  role="region"
+                  aria-labelledby={`faq-question-${idx}`}
+                  aria-hidden={!isOpen}
+                >
+                  <div className="faq-answer-inner">
+                    <div className="faq-answer" style={{ color: '#222222', fontSize: '15px', fontWeight: 500, lineHeight: 1.6 }}>
+                      {faq.a}
+                    </div>
                   </div>
-                )}
+                </div>
               </div>
             );
           })}

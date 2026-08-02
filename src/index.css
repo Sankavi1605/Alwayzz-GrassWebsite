@@ -1627,6 +1627,76 @@ body::before {
   cursor: pointer;
 }
 
+/* Smooth accordion.
+
+   height:auto cannot be transitioned, so the panel is a grid whose single
+   row goes 0fr -> 1fr. That animates to the content's OWN height with no
+   measuring and no max-height guesswork. The inner element needs
+   overflow:hidden and min-height:0 — without min-height:0 a grid item
+   refuses to shrink below its content and nothing moves. */
+.faq-answer-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 0.4s cubic-bezier(0.22, 0.61, 0.36, 1),
+    opacity 0.28s ease;
+}
+
+.faq-answer-wrap.open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transition:
+    grid-template-rows 0.4s cubic-bezier(0.22, 0.61, 0.36, 1),
+    opacity 0.34s ease 0.08s;
+}
+
+.faq-answer-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* The +/- morphs instead of swapping icons: two identical bars, one rotated
+   90deg, spun flat on open. Swapping two icons mid-animation is the thing
+   that made the toggle feel abrupt even once the panel moved smoothly. */
+.faq-toggle-icon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.faq-toggle-icon::before,
+.faq-toggle-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 2px;
+  border-radius: 2px;
+  background: #0a0a0a;
+  transform: translate(-50%, -50%);
+  transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.faq-toggle-icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.faq-toggle-icon.open::after {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-answer-wrap,
+  .faq-answer-wrap.open,
+  .faq-toggle-icon::before,
+  .faq-toggle-icon::after {
+    transition: none;
+  }
+}
+
 .faq-answer {
   padding: 0 28px 22px;
   font-size: 14px;
