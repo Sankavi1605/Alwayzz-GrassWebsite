@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import useReveal from '../hooks/useReveal';
 
 const BG_IMAGE_1 = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260713_140344_79e1296a-86d7-43fd-9b5f-63ffe560f291.png";
 const FRONT_VIDEO = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260713_162101_0d7498c5-29bb-47bf-a99f-2773c0a880a9.mp4";
@@ -6,6 +7,7 @@ const OVERLAY_IMAGE = "https://soft-zoom-63098134.figma.site/_assets/v11/3f10f18
 
 export default function Capabilities() {
   const containerRef = useRef(null);
+  const revealRef = useReveal();
   const targetPos = useRef({ x: 600, y: 400 });
   const smoothPos = useRef({ x: 600, y: 400 });
   const [renderPos, setRenderPos] = useState({ x: 600, y: 400 });
@@ -185,20 +187,25 @@ export default function Capabilities() {
       </div>
 
       {/* Content Layer (Over Background & Video Layers) */}
-      <section id="capabilities" className="section-container" style={{ position: 'relative', zIndex: 40 }}>
+      <section id="capabilities" className="section-container" style={{ position: 'relative', zIndex: 40 }} ref={revealRef}>
         <div className="section-header">
-          <span className="section-tag">What we make</span>
-          <h2 className="section-title1 grass-text">
+          <span className="section-tag" data-reveal>What we make</span>
+          <h2 className="section-title1 grass-text" data-reveal style={{ '--reveal-delay': '110ms' }}>
             One team for <span className="serif italic">the whole stack</span>.
           </h2>
-          <p className="section-subtitle">
+          <p className="section-subtitle" data-reveal style={{ '--reveal-delay': '220ms' }}>
             Instead of briefing four freelancers who have never met each other, you brief us once.
           </p>
         </div>
 
         <div className="capabilities-grid">
-          {capabilities.map((cap) => (
-            <div key={cap.num} className="capability-card liquid-glass">
+          {capabilities.map((cap, i) => (
+            <div
+              key={cap.num}
+              className="capability-card liquid-glass"
+              data-reveal="card"
+              style={{ '--reveal-delay': `${i * 110}ms` }}
+            >
               <span className="capability-num">{cap.num}</span>
               <h3 className="capability-title">{cap.title}</h3>
               <p className="capability-desc">{cap.desc}</p>

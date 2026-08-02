@@ -1,4 +1,5 @@
 import React from 'react';
+import useReveal from '../hooks/useReveal';
 
 export default function TrustedBy() {
   const partners = [
@@ -17,13 +18,15 @@ export default function TrustedBy() {
   // Quadruple the partners list for seamless endless marquee scroll
   const marqueePartners = [...partners, ...partners, ...partners, ...partners];
 
+  const ref = useReveal();
+
   return (
-    <section className="trusted-section">
-      <div className="trusted-label">
+    <section className="trusted-section" ref={ref}>
+      <div className="trusted-label" data-reveal>
         Work shipped for teams like
       </div>
 
-      <div className="trusted-marquee-wrapper">
+      <div className="trusted-marquee-wrapper" data-reveal style={{ '--reveal-delay': '140ms' }}>
         <div className="trusted-marquee-track">
           {marqueePartners.map((item, idx) => (
             <span key={idx} className={item.className}>

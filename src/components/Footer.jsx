@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import useReveal from '../hooks/useReveal';
 
 export default function Footer({ onBookClick }) {
   const [estTime, setEstTime] = useState('');
+  const revealRef = useReveal();
 
   useEffect(() => {
     const updateClock = () => {
@@ -16,9 +18,9 @@ export default function Footer({ onBookClick }) {
   }, []);
 
   return (
-    <footer className="footer">
+    <footer className="footer" ref={revealRef}>
       <div className="footer-container">
-        <div className="footer-brand">
+        <div className="footer-brand" data-reveal>
           <a href="#" className="logo-text">
             Alwayzz<span className="logo-reg">®</span>
           </a>
@@ -30,7 +32,7 @@ export default function Footer({ onBookClick }) {
           </div>
         </div>
 
-        <div className="footer-column">
+        <div className="footer-column" data-reveal style={{ '--reveal-delay': '90ms' }}>
           <span className="footer-column-title">Navigation</span>
           <a href="#projects" className="footer-link">Selected Work</a>
           <a href="#capabilities" className="footer-link">Capabilities</a>
@@ -38,7 +40,7 @@ export default function Footer({ onBookClick }) {
           <a href="#faqs" className="footer-link">Frequently Asked</a>
         </div>
 
-        <div className="footer-column">
+        <div className="footer-column" data-reveal style={{ '--reveal-delay': '180ms' }}>
           <span className="footer-column-title">Socials</span>
           <a href="https://twitter.com" target="_blank" rel="noreferrer" className="footer-link">Twitter / X</a>
           <a href="https://dribbble.com" target="_blank" rel="noreferrer" className="footer-link">Dribbble</a>
@@ -46,7 +48,7 @@ export default function Footer({ onBookClick }) {
           <a href="https://github.com" target="_blank" rel="noreferrer" className="footer-link">GitHub</a>
         </div>
 
-        <div className="footer-column">
+        <div className="footer-column" data-reveal style={{ '--reveal-delay': '270ms' }}>
           <span className="footer-column-title">Legal & Contact</span>
           <a href="#" onClick={(e) => { e.preventDefault(); onBookClick(); }} className="footer-link">Book Intro Call</a>
           <a href="mailto:hello@alwayzz.design" className="footer-link">hello@alwayzz.design</a>
@@ -55,7 +57,7 @@ export default function Footer({ onBookClick }) {
         </div>
       </div>
 
-      <div className="footer-bottom">
+      <div className="footer-bottom" data-reveal style={{ '--reveal-delay': '340ms' }}>
         <span>© {new Date().getFullYear()} Alwayzz Studio Inc. All rights reserved.</span>
         <span>Built in New York, mostly after dark.</span>
       </div>

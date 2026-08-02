@@ -1,8 +1,11 @@
 import React from 'react';
+import useReveal from '../hooks/useReveal';
 
 export default function FinalCTA({ onBookClick, onViewPlansClick }) {
+  const revealRef = useReveal();
+
   return (
-    <section className="final-cta-section section-container" style={{ paddingBottom: '60px', overflow: 'visible' }}>
+    <section className="final-cta-section section-container" style={{ paddingBottom: '60px', overflow: 'visible' }} ref={revealRef}>
       <div className="final-cta-frame-wrapper">
         {/* Wooden Frame Image (100% Fully Visible & Unblurred Overlay) */}
         <img 
@@ -13,19 +16,19 @@ export default function FinalCTA({ onBookClick, onViewPlansClick }) {
 
         {/* Glass Card Content (Sitting Under / Inside the Wooden Branch Frame) */}
         <div className="final-cta-card glass-card-under">
-          <div className="cta-slot-badge">
+          <div className="cta-slot-badge" data-reveal>
             Taking on two new projects this month
           </div>
 
-          <h2 className="final-cta-title grass-text">
+          <h2 className="final-cta-title grass-text" data-reveal style={{ '--reveal-delay': '120ms' }}>
             Let us make something <span className="serif italic">worth keeping</span>.
           </h2>
 
-          <p className="final-cta-subtitle" style={{ color: 'rgba(255, 255, 255, 0.85)', textShadow: '0 1px 4px rgba(0, 0, 0, 0.8)' }}>
+          <p className="final-cta-subtitle" data-reveal style={{ '--reveal-delay': '240ms', color: 'rgba(255, 255, 255, 0.85)', textShadow: '0 1px 4px rgba(0, 0, 0, 0.8)' }}>
             Fifteen minutes, no deck. We will tell you honestly whether we are the right fit.
           </p>
 
-          <div className="cta-row" style={{ marginTop: '8px' }}>
+          <div className="cta-row" data-reveal style={{ marginTop: '8px', '--reveal-delay': '360ms' }}>
             <button 
               className="primary-btn see-plans-btn" 
               onClick={onViewPlansClick}

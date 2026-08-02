@@ -9,11 +9,15 @@ import FinalCTA from './components/FinalCTA';
 import Footer from './components/Footer';
 import BookingModal from './components/BookingModal';
 import LoadingScreen from './components/LoadingScreen';
+import useReveal from './hooks/useReveal';
 
 export default function App() {
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+
+  const islandRef = useReveal();
+  const signRef = useReveal();
 
   // Initial loading page display for 2.5 seconds
   useEffect(() => {
@@ -22,6 +26,15 @@ export default function App() {
     }, 2500);
     return () => clearTimeout(timer);
   }, []);
+
+  // Release the reveal animations only once the loading overlay has lifted,
+  // otherwise everything above the fold animates behind it and is already
+  // settled by the time it is visible.
+  useEffect(() => {
+    if (isLoading) return;
+    window.__alwayzzReady = true;
+    window.dispatchEvent(new Event('alwayzz:ready'));
+  }, [isLoading]);
 
   const handleBookClick = () => {
     setSelectedProject(null);
@@ -148,13 +161,13 @@ export default function App() {
 
       {/* 4. Floating Island Background Section (178512684152f2-Photoroom.png on Right) */}
       <div className="middle-bg-section-1">
-        <section className="section-container">
+        <section className="section-container" ref={islandRef}>
           <div className="section-header split-left-header">
-            <span className="section-tag">The craft</span>
-            <h2 className="section-title grass-text">
+            <span className="section-tag" data-reveal>The craft</span>
+            <h2 className="section-title grass-text" data-reveal style={{ '--reveal-delay': '110ms' }}>
               Design and engineering, <span className="serif italic">same room</span>.
             </h2>
-            <p className="section-subtitle">
+            <p className="section-subtitle" data-reveal style={{ '--reveal-delay': '220ms' }}>
               The people drawing it are the people building it, so nothing gets lost on the handoff.
             </p>
           </div>
@@ -168,13 +181,13 @@ export default function App() {
 
       {/* 5. UNCROPPED Middle Image Section (1785125759f7fc-Photoroom.png) */}
       <div className="middle-bg-section-2">
-        <section className="section-container" style={{ padding: '0 20px' }}>
+        <section className="section-container" style={{ padding: '0 20px' }} ref={signRef}>
           <div className="section-header centered stone-sign-header">
-            <span className="section-tag">Why we are quick</span>
-            <h2 className="section-title carved-text">
+            <span className="section-tag" data-reveal>Why we are quick</span>
+            <h2 className="section-title carved-text" data-reveal style={{ '--reveal-delay': '110ms' }}>
               Move fast, <span className="serif italic">keep the craft</span>.
             </h2>
-            <p className="section-subtitle">
+            <p className="section-subtitle" data-reveal style={{ '--reveal-delay': '220ms' }}>
               Senior hands on your work from day one. No onboarding month, no change orders, no year-long contract.
             </p>
           </div>

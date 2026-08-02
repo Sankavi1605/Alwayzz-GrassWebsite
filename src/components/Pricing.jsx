@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
+import useReveal from '../hooks/useReveal';
 
 export default function Pricing({ onBookClick }) {
   const [isQuarterly, setIsQuarterly] = useState(false);
+  const revealRef = useReveal();
 
   return (
-    <section id="plans" className="section-container pricing-section" style={{ scrollMarginTop: '120px' }}>
+    <section id="plans" className="section-container pricing-section" style={{ scrollMarginTop: '120px' }} ref={revealRef}>
       <div className="section-header" style={{ textAlign: 'center', alignItems: 'center' }}>
-        <span className="section-tag">Pricing</span>
-        <h2 className="section-title grass-text">
+        <span className="section-tag" data-reveal>Pricing</span>
+        <h2 className="section-title grass-text" data-reveal style={{ '--reveal-delay': '110ms' }}>
           One price, <span className="serif italic">no surprises</span>.
         </h2>
-        <p className="section-subtitle">
+        <p className="section-subtitle" data-reveal style={{ '--reveal-delay': '220ms' }}>
           The same number every month. Quiet quarter? Pause it and pick up where you left off.
         </p>
       </div>
 
       {/* Monthly / Quarterly Toggle */}
-      <div className="pricing-toggle-wrapper">
+      <div className="pricing-toggle-wrapper" data-reveal style={{ '--reveal-delay': '300ms' }}>
         <span style={{ fontSize: '15px', fontWeight: isQuarterly ? 400 : 600, color: isQuarterly ? 'var(--muted)' : 'var(--text)' }}>
           Monthly Billing
         </span>
@@ -39,7 +41,7 @@ export default function Pricing({ onBookClick }) {
       {/* Pricing Cards Grid (3 Cards horizontally with pricecard-Photoroom.png background) */}
       <div className="pricing-grid">
         {/* Standard Plan */}
-        <div className="pricing-card-img-bg">
+        <div className="pricing-card-img-bg" data-reveal="plaque">
           <div className="board-card-inner">
             <h3 className="plan-name wood-script engraved-name">Standard</h3>
             <p className="plan-desc engraved-body" style={{ lineHeight: 1.5, fontSize: '13px', marginBottom: '12px', fontWeight: 700 }}>
@@ -75,7 +77,7 @@ export default function Pricing({ onBookClick }) {
         </div>
 
         {/* Double Power Featured Plan */}
-        <div className="pricing-card-img-bg featured">
+        <div className="pricing-card-img-bg featured" data-reveal="plaque" style={{ '--reveal-delay': '130ms' }}>
           <span className="featured-badge" style={{ top: '32px', right: 'auto', left: '50%', transform: 'translateX(-50%)' }}>
             Most Popular
           </span>
@@ -114,7 +116,7 @@ export default function Pricing({ onBookClick }) {
         </div>
 
         {/* Custom Scope / Enterprise */}
-        <div className="pricing-card-img-bg">
+        <div className="pricing-card-img-bg" data-reveal="plaque" style={{ '--reveal-delay': '260ms' }}>
           <div className="board-card-inner">
             <h3 className="plan-name wood-script engraved-name">Custom Scope</h3>
             <p className="plan-desc engraved-body" style={{ lineHeight: 1.5, fontSize: '13px', marginBottom: '12px', fontWeight: 700 }}>

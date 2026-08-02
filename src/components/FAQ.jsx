@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import useReveal from '../hooks/useReveal';
 import { Plus, Minus } from 'lucide-react';
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(0);
+  const revealRef = useReveal();
 
   const faqs = [
     {
@@ -39,15 +41,15 @@ export default function FAQ() {
       <div className="faq-video-overlay" />
 
       {/* Foreground FAQ Content */}
-      <section id="faqs" className="section-container" style={{ position: 'relative', zIndex: 10, padding: '40px 20px' }}>
+      <section id="faqs" className="section-container" style={{ position: 'relative', zIndex: 10, padding: '40px 20px' }} ref={revealRef}>
         <div className="section-header centered">
-          <span className="section-tag liquid-glass" style={{ color: '#ffffff', background: 'rgba(255,255,255,0.2)', border: '1px solid rgba(255,255,255,0.4)' }}>
+          <span className="section-tag liquid-glass" data-reveal style={{ color: '#ffffff', background: 'rgba(255,255,255,0.2)', border: '1px solid rgba(255,255,255,0.4)' }}>
             Questions
           </span>
-          <h2 className="section-title grass-text">
+          <h2 className="section-title grass-text" data-reveal style={{ '--reveal-delay': '110ms' }}>
             The things people <span className="serif italic">ask first</span>.
           </h2>
-          <p className="section-subtitle" style={{ color: 'rgba(255,255,255,0.92)', textShadow: '0 1px 6px rgba(0,0,0,0.6)' }}>
+          <p className="section-subtitle" data-reveal style={{ '--reveal-delay': '220ms', color: 'rgba(255,255,255,0.92)', textShadow: '0 1px 6px rgba(0,0,0,0.6)' }}>
             Turnaround, revisions, pausing, and who owns what at the end of it.
           </p>
         </div>
@@ -58,8 +60,10 @@ export default function FAQ() {
             return (
               <div 
                 key={idx} 
-                className="faq-item liquid-glass-strong" 
+                className="faq-item liquid-glass-strong"
+                data-reveal="card"
                 style={{ 
+                  '--reveal-delay': `${idx * 90}ms`,
                   background: 'rgba(255, 255, 255, 0.88)', 
                   backdropFilter: 'blur(20px)',
                   WebkitBackdropFilter: 'blur(20px)',
