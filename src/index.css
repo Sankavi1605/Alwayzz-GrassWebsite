@@ -997,6 +997,8 @@ body::before {
   background-repeat: no-repeat;
   background-position: center center;
   mix-blend-mode: multiply;
+  /* contain => image height is width/1.5 until the box height caps it */
+  --sign-shift: calc(min(7.67vw, 121px) + 34px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1074,9 +1076,20 @@ body::before {
   transition: opacity 0.3s ease;
 }
 
+/* The slab is NOT centred in its own PNG: chains and foliage fill the top,
+   so the stone runs from 0.40 to 0.84 of the image height and its centre sits
+   at 0.615, not 0.5. Centring the copy in the section therefore parks it
+   ~11% of the image height above the stone. --sign-shift pushes it back down
+   onto the slab, and is expressed in vw because the artwork is sized as a
+   percentage of the section width at every breakpoint.
+
+   transform, not margin: a margin would grow the flex item and move the copy
+   only half as far, which is what the old hand-tuned 140px/90px/70px values
+   were fighting. */
 .stone-sign-header {
   max-width: 520px;
-  margin: 140px auto 0;
+  margin: 0 auto;
+  transform: translateY(var(--sign-shift, 0px));
   padding: 20px 16px;
   text-align: center;
   display: flex;
@@ -2159,6 +2172,7 @@ body::before {
   .middle-bg-section-2 {
     min-height: 780px;
     background-size: 115% auto;
+    --sign-shift: calc(8.82vw + 32px);
   }
 
   .capabilities-grid {
@@ -2373,10 +2387,11 @@ body::before {
     min-height: 620px;
     padding: 20px 0 60px;
     background-size: 150% auto;
+    /* 150% wide => rendered image height == box width */
+    --sign-shift: calc(11.5vw + 39px);
   }
 
   .stone-sign-header {
-    margin-top: 90px;
     padding: 16px 12px;
     max-width: 330px;
   }
@@ -2544,6 +2559,7 @@ body::before {
   .middle-bg-section-2 {
     min-height: 520px;
     background-size: 175% auto;
+    --sign-shift: calc(13.42vw + 39px);
   }
 }
 
@@ -2591,11 +2607,14 @@ body::before {
 
   .middle-bg-section-2 {
     min-height: 460px;
-    background-size: 195% auto;
+    /* 210%, not 195%: at 320px the slab was only 183px tall and the copy is
+       194px, so perfectly centred text still overhung the stone. Scaling the
+       board up fits it rather than shrinking already-small type. */
+    background-size: 210% auto;
+    --sign-shift: calc(16.1vw + 39px);
   }
 
   .stone-sign-header {
-    margin-top: 70px;
     max-width: 270px;
   }
 
