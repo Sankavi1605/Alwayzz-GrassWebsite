@@ -312,14 +312,20 @@ body::before {
   pointer-events: none;
 }
 
-/* Global Side Curved Lines Animation (Hero Pulse Lines Across ALL Sections) */
+/* Global Side Curved Lines Animation (Hero Pulse Lines Across ALL Sections)
+
+   z-index -1 puts these ABOVE the fixed page backdrop (which sits at -2) but
+   BELOW every section, image and letter on the page. At z-index 1 they beat
+   both the section artwork (positioned, z-index auto) and the footer image
+   (z-index 0 inside a non-stacking parent), so the arcs were drawing across
+   the mossy branch instead of passing behind it. */
 .global-side-lines {
   position: fixed;
   top: 0;
   bottom: 0;
   width: 50%;
   pointer-events: none;
-  z-index: 1;
+  z-index: -1;
   overflow: hidden;
 }
 
@@ -363,7 +369,7 @@ body::before {
   right: 0;
   height: 320px;
   pointer-events: none;
-  z-index: 1;
+  z-index: -1;
   overflow: hidden;
 }
 
